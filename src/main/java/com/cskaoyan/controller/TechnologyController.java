@@ -1,5 +1,6 @@
 package com.cskaoyan.controller;
 
+import com.cskaoyan.bean.Tip;
 import com.cskaoyan.bean.Technology;
 import com.cskaoyan.service.TechnologyService;
 import org.apache.ibatis.annotations.Param;
@@ -20,6 +21,12 @@ import java.util.List;
 public class TechnologyController {
     @Autowired
     TechnologyService technologyService;
+
+    @RequestMapping("*_judge")
+    @ResponseBody
+    public String judge() {
+        return "";
+    }
 
     @RequestMapping("find")
     public String find() {
@@ -59,18 +66,38 @@ public class TechnologyController {
     /**
      * 增加一条工艺数据
      */
-    @RequestMapping("add_judge")
-    public String add_judge() {
+    @RequestMapping("add")
+    public String add(@Param("technology") Technology technology){
         return "technology_add";
     }
 
     @RequestMapping("insert")
     @ResponseBody
-    public String insert(Technology technology) {
+    public Tip insert(Technology technology) {
         boolean addTechnology = technologyService.addTechnology(technology);
-        if (addTechnology) {
-            return "technology_list";
+        if (addTechnology){
+           return new Tip("200","新增工艺成功!",null);
         }
-        return "technology_add";
+        return new Tip("0","添加失败。",null);
     }
+
+    @RequestMapping("edit")
+    public String edit(@Param("technology") Technology technology){
+        return "technology_edit";
+    }
+
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Tip update_all(Technology technology){
+        boolean editTechnology = technologyService.editTechnology(technology);
+        if (editTechnology){
+            return new Tip("200","修改工艺成功",null);
+        }
+        return new Tip("0","修改失败",null);
+    }
+
+
+
+
+
 }

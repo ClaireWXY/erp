@@ -48,7 +48,7 @@
 	            </td>
 	        </tr>
 	        <tr>
-	            <td>二班工序能力:</td>
+	            <td>二倍工序能力:</td>
 	            <td>
 	            	<input class="easyui-numberbox" maxlength="11" name="doubleCapacity"/>
 	            </td>

@@ -38,7 +38,7 @@
 
 <div  id="toolbar_technologyPlan" style=" height: 22px; padding: 3px 11px; background: #fafafa;">  
 	
-	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
+	<%--<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
 		<c:if test="${per=='technologyPlan:add' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="technologyPlan_add()">
@@ -60,9 +60,24 @@
 				</a>
 		    </div>  
 		</c:if>
-	</c:forEach>
-	
-	<div class="datagrid-btn-separator"></div>  
+	</c:forEach>--%>
+		<div style="float: left;">
+			<a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="technologyPlan_add()">
+				新增
+			</a>
+		</div>
+		<div style="float: left;">
+			<a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="technologyPlan_edit()">
+				编辑
+			</a>
+		</div>
+		<div style="float: left;">
+			<a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="technologyPlan_delete()">
+				删除
+			</a>
+		</div>
+
+		<div class="datagrid-btn-separator"></div>
 	
 	<div style="float: left;">  
 		<a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="technologyPlan_reload()">刷新</a>  

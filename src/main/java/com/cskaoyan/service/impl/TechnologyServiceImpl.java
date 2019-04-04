@@ -41,4 +41,10 @@ public class TechnologyServiceImpl implements TechnologyService {
         int insert = technologyMapper.insert(technology);
         return insert==1;
     }
+
+    @Override
+    public boolean editTechnology(Technology technology) {
+        int updateByPrimaryKey = technologyMapper.updateByPrimaryKey(technology);
+        return updateByPrimaryKey==1;
+    }
 }
