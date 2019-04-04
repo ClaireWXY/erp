@@ -96,8 +96,14 @@ public class TechnologyController {
         return new Tip("0","修改失败",null);
     }
 
-
-
-
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Tip delete_batch(@Param("ids") String[] ids){
+        boolean deleteTechnology = technologyService.deleteBatchTechnology(ids);
+        if (deleteTechnology){
+            return new Tip("200","删除工艺成功",null);
+        }
+        return new Tip("0","删除失败",null);
+    }
 
 }

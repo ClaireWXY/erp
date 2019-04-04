@@ -193,4 +193,11 @@
     <select id="searchTeachnologyByTechnologyName" resultMap="BaseResultMap">
         select * from technology where technology_name = #{technologyName,jdbcType=VARCHAR} limit #{rows} offset #{offset}
     </select>
+
+    <delete id="deleteBatchTechnologyByIds">
+        delete from technology where technology_id in (
+        <foreach collection="array" item="id" separator=",">
+        #{id}
+        </foreach>)
+    </delete>
 </mapper>
