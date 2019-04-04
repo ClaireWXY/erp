@@ -32,6 +32,27 @@
     from material
     where material_id = #{materialId,jdbcType=VARCHAR}
   </select>
+
+  <!--查找所有的material-->
+  <select id="selectAllMaterial" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from material
+  </select>
+
+  <!--查找分页的material-->
+  <select id="selectPageMaterial" resultMap="BaseResultMap">
+    select * from material limit #{limit} offset #{offset}
+  </select>
+
+  <!--按materialId来查询material-->
+  <select id="selectPageMaterialById" resultMap="BaseResultMap">
+    select * from material where material_id = #{materialId} limit #{limit} offset #{offset}
+  </select>
+
+  <!--按materialType来查询material-->
+  <select id="selectPageMaterialByType" resultMap="BaseResultMap">
+    select * from material where material_type = #{materialType} limit #{limit} offset #{offset}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated
