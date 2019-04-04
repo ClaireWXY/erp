@@ -1,43 +1,31 @@
 package com.cskaoyan.bean;
 
 public class Custom {
-    String 	orderId;
-    String 	customId;
-    String 	productId;
-    String 	orderDate;
-    String 	requestDate;
-    String 	note;
-    int    	quantity;
-    double	unitPrice;
-    String	unit;
-    String	image;
-    String	file;
+    String	customId;
+    String	customName;
+    String	fullName;
+    String	address;
+    String	fax;
+    String	email;
+    String	ownerName;
+    String	ownerTel;
     int		status;
+    String	note;
 
     public Custom() {
     }
 
-    public Custom(String orderId, String customId, String productId, String orderDate, String requestDate, String note, int quantity, double unitPrice, String unit, String image, String file, int status) {
-        this.orderId = orderId;
+    public Custom(String customId, String customName, String fullName, String address, String fax, String email, String ownerName, String ownerTel, int status, String note) {
         this.customId = customId;
-        this.productId = productId;
-        this.orderDate = orderDate;
-        this.requestDate = requestDate;
-        this.note = note;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.unit = unit;
-        this.image = image;
-        this.file = file;
+        this.customName = customName;
+        this.fullName = fullName;
+        this.address = address;
+        this.fax = fax;
+        this.email = email;
+        this.ownerName = ownerName;
+        this.ownerTel = ownerTel;
         this.status = status;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+        this.note = note;
     }
 
     public String getCustomId() {
@@ -48,76 +36,60 @@ public class Custom {
         this.customId = customId;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getCustomName() {
+        return customName;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setCustomName(String customName) {
+        this.customName = customName;
     }
 
-    public String getOrderDate() {
-        return orderDate;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getRequestDate() {
-        return requestDate;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRequestDate(String requestDate) {
-        this.requestDate = requestDate;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getNote() {
-        return note;
+    public String getFax() {
+        return fax;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setFax(String fax) {
+        this.fax = fax;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getEmail() {
+        return email;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public double getUnitPrice() {
-        return unitPrice;
+    public String getOwnerName() {
+        return ownerName;
     }
 
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
-    public String getUnit() {
-        return unit;
+    public String getOwnerTel() {
+        return ownerTel;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
+    public void setOwnerTel(String ownerTel) {
+        this.ownerTel = ownerTel;
     }
 
     public int getStatus() {
@@ -128,21 +100,27 @@ public class Custom {
         this.status = status;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     @Override
     public String toString() {
         return "bean.Custom{" +
-                "orderId='" + orderId + '\'' +
-                ", customId='" + customId + '\'' +
-                ", productId='" + productId + '\'' +
-                ", orderDate='" + orderDate + '\'' +
-                ", requestDate='" + requestDate + '\'' +
-                ", note='" + note + '\'' +
-                ", quantity=" + quantity +
-                ", unitPrice=" + unitPrice +
-                ", unit='" + unit + '\'' +
-                ", image='" + image + '\'' +
-                ", file='" + file + '\'' +
+                "customId='" + customId + '\'' +
+                ", customName='" + customName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", address='" + address + '\'' +
+                ", fax='" + fax + '\'' +
+                ", email='" + email + '\'' +
+                ", ownerName='" + ownerName + '\'' +
+                ", ownerTel='" + ownerTel + '\'' +
                 ", status=" + status +
+                ", note='" + note + '\'' +
                 '}';
     }
 }

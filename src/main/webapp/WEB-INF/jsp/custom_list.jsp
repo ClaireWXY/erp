@@ -25,7 +25,7 @@
 
 <div  id="toolbar_custom" style=" height: 22px; padding: 3px 11px; background: #fafafa;">  
 	
-	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
+	<%--<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
 		<c:if test="${per=='custom:add' }" >
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="custom_add()">新增</a>  
@@ -42,9 +42,22 @@
 		        	 onclick="custom_delete()">删除</a>  
 		    </div>  
 		</c:if>
-	</c:forEach>
-	
-	<div class="datagrid-btn-separator"></div>  
+	</c:forEach>--%>
+		<div style="float: left;">
+			<a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="custom_add()">新增</a>
+		</div>
+
+			<div style="float: left;">
+				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="custom_edit()">编辑</a>
+			</div>
+
+			<div style="float: left;">
+				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel"
+				   onclick="custom_delete()">删除</a>
+			</div>
+
+
+		<div class="datagrid-btn-separator"></div>
 	
 	<div style="float: left;">  
 		<a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="custom_reload()">刷新</a>  
@@ -118,7 +131,7 @@ function doSearch_custom(value,name){ //用户输入用户名,点击搜素,触�
 	}else{
 		$("#customList").datagrid({  
 	        title:'客户列表', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, 
-	        	method:'get', nowrap:true,  
+	        	method:'get', nowrap:true,
 	        toolbar:"toolbar_custom", url:'custom/search_custom_by_'+name+'?searchValue='+value, 
 	        	loadMsg:'数据加载中......',  fitColumns:true,//允许表格自动缩放,以适应父容器  
 	        columns : [ [ 

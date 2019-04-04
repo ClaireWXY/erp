@@ -1,17 +1,17 @@
 package com.cskaoyan.mapper;
 
-import com.cskaoyan.bean.CustomOrder;
+import com.cskaoyan.bean.Custom;
 
 public interface CustomOrderMapper {
     int deleteByPrimaryKey(String orderId);
 
-    int insert(CustomOrder record);
+    int insert(Custom record);
 
-    int insertSelective(CustomOrder record);
+    int insertSelective(Custom record);
 
-    CustomOrder selectByPrimaryKey(String orderId);
+    Custom selectByPrimaryKey(String orderId);
 
-    int updateByPrimaryKeySelective(CustomOrder record);
+    int updateByPrimaryKeySelective(Custom record);
 
-    int updateByPrimaryKey(CustomOrder record);
+    int updateByPrimaryKey(Custom record);
 }
