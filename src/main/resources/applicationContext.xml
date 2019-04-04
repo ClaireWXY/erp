@@ -18,6 +18,7 @@
         <property name="password" value="123456"/>
         <property name="filters" value="stat" />
     </bean>
+
     <!--事务管理器-->
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>

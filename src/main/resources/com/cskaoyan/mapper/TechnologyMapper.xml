@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.mapper.TechnologyMapper">
+
   <resultMap id="BaseResultMap" type="com.cskaoyan.bean.Technology">
     <!--
       WARNING - @mbg.generated
@@ -61,6 +62,7 @@
       #{overtimeOverfulfilCapacity,jdbcType=INTEGER}, #{doubleCapacity,jdbcType=INTEGER}, 
       #{overfulfilCapacity,jdbcType=INTEGER})
   </insert>
+
   <insert id="insertSelective" parameterType="com.cskaoyan.bean.Technology">
     <!--
       WARNING - @mbg.generated
@@ -179,4 +181,16 @@
       overfulfil_capacity = #{overfulfilCapacity,jdbcType=INTEGER}
     where technology_id = #{technologyId,jdbcType=VARCHAR}
   </update>
+
+  <select id="queryAllTechnology" resultMap="BaseResultMap">
+    select * from technology limit #{rows} offset #{offset}
+  </select>
+
+    <select id="searchTechnologyByTechnologyId" resultMap="BaseResultMap">
+        select * from technology where technology_id = #{technologyId,jdbcType=VARCHAR} limit #{rows} offset #{offset}
+    </select>
+
+    <select id="searchTeachnologyByTechnologyName" resultMap="BaseResultMap">
+        select * from technology where technology_name = #{technologyName,jdbcType=VARCHAR} limit #{rows} offset #{offset}
+    </select>
 </mapper>
