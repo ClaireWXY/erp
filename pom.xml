@@ -103,11 +103,11 @@
       <artifactId>standard</artifactId>
       <version>1.1.2</version>
     </dependency>
-    <dependency>
+    <!--<dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>2.10.0</version>
-    </dependency>
+    </dependency>-->
     <!--druid数据库连接池-->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -115,7 +115,33 @@
       <version>1.1.8</version>
     </dependency>
 
+    <!--jason相关-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.6</version>
+    </dependency>
+<!--分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+
+    <!--驱动-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.12</version>
+    </dependency>
+
     <!--单元测试-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
