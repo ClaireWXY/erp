@@ -166,4 +166,32 @@
       note = #{note,jdbcType=VARCHAR}
     where unqualify_apply_id = #{unqualifyApplyId,jdbcType=VARCHAR}
   </update>
+
+  <select id="UnqualifyCount" resultType="_int">
+    select count(*) from unqualify_apply
+  </select>
+
+  <select id="findPageUnQualify" resultMap="BaseResultMap">
+    select * from unqualify_apply limit #{page} , #{rows}
+  </select>
+
+
+  <select id="findPageUnQualifyList" resultType="com.cskaoyan.bean.PageUnQualifyList">
+   SELECT
+    unqualify_apply.unqualify_apply_id as unqualifyApplyId,
+    unqualify_apply.product_id as productId,
+    unqualify_apply.unqualify_item as unqualifyItem,
+    unqualify_apply.unqualify_count as unqualifyCount,
+    unqualify_apply.assembly_date as assemblyDate,
+    unqualify_apply.emp_id as empId,
+    unqualify_apply.apply_date as applyDate,
+    unqualify_apply.note as note ,
+    product.product_name as productName ,
+    employee.emp_name as empName
+    from unqualify_apply,
+    product, employee
+    where
+    unqualify_apply.product_id=product.product_id and unqualify_apply.emp_id=employee.emp_id
+    limit #{page} , #{rows}
+  </select>
 </mapper>

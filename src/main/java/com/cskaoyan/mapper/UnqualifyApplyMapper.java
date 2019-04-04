@@ -1,6 +1,10 @@
 package com.cskaoyan.mapper;
 
+import com.cskaoyan.bean.PageUnQualifyList;
 import com.cskaoyan.bean.UnqualifyApply;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UnqualifyApplyMapper {
     int deleteByPrimaryKey(String unqualifyApplyId);
@@ -14,4 +18,8 @@ public interface UnqualifyApplyMapper {
     int updateByPrimaryKeySelective(UnqualifyApply record);
 
     int updateByPrimaryKey(UnqualifyApply record);
+
+    int UnqualifyCount();
+
+    List<PageUnQualifyList> findPageUnQualifyList(@Param("page") int page , @Param("rows") int rows);
 }
