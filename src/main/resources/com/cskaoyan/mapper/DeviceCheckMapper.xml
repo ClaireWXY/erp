@@ -144,4 +144,24 @@
       device_check_fault_id = #{deviceCheckFaultId,jdbcType=VARCHAR}
     where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
   </update>
+  
+  <select id="queryAllDeviceCheck" resultMap="BaseResultMap">
+    select * from device_check limit #{rows} offset #{offset}
+  </select>
+
+  <select id="searchDeviceCheckByDeviceCheckId" resultMap="BaseResultMap">
+        select * from device_check where device_check_id = #{DeviceCheckId,jdbcType=VARCHAR} limit #{rows} offset #{offset}
+    </select>
+
+  <select id="searchTeachnologyByDeviceCheckName" resultMap="BaseResultMap">
+        select * from device_check where device_check_name = #{DeviceCheckName,jdbcType=VARCHAR} limit #{rows} offset #{offset}
+    </select>
+
+  <delete id="deleteBatchDeviceCheckByIds">
+    delete from device_check where device_check_id in (
+    <foreach collection="array" item="id" separator=",">
+      #{id}
+    </foreach>)
+  </delete>
+
 </mapper>

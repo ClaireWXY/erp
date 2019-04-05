@@ -1,15 +1,18 @@
 package com.cskaoyan.bean;
 
 public class Process {
-    String	processId;
-    String	technologyPlanId;
-    int		sequence;
-    int		quota;
+    private String processId;
+
+    private String technologyPlanId;
+
+    private Integer sequence;
+
+    private Integer quota;
 
     public Process() {
     }
 
-    public Process(String processId, String technologyPlanId, int sequence, int quota) {
+    public Process(String processId, String technologyPlanId, Integer sequence, Integer quota) {
         this.processId = processId;
         this.technologyPlanId = technologyPlanId;
         this.sequence = sequence;
@@ -21,7 +24,7 @@ public class Process {
     }
 
     public void setProcessId(String processId) {
-        this.processId = processId;
+        this.processId = processId == null ? null : processId.trim();
     }
 
     public String getTechnologyPlanId() {
@@ -29,28 +32,28 @@ public class Process {
     }
 
     public void setTechnologyPlanId(String technologyPlanId) {
-        this.technologyPlanId = technologyPlanId;
+        this.technologyPlanId = technologyPlanId == null ? null : technologyPlanId.trim();
     }
 
-    public int getSequence() {
+    public Integer getSequence() {
         return sequence;
     }
 
-    public void setSequence(int sequence) {
+    public void setSequence(Integer sequence) {
         this.sequence = sequence;
     }
 
-    public int getQuota() {
+    public Integer getQuota() {
         return quota;
     }
 
-    public void setQuota(int quota) {
+    public void setQuota(Integer quota) {
         this.quota = quota;
     }
 
     @Override
     public String toString() {
-        return "bean.Process{" +
+        return "Process{" +
                 "processId='" + processId + '\'' +
                 ", technologyPlanId='" + technologyPlanId + '\'' +
                 ", sequence=" + sequence +

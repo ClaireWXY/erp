@@ -1,5 +1,7 @@
 package com.cskaoyan.bean;
 
+import java.util.List;
+
 public class Technology {
     String	technologyId;
     String	technologyName;
@@ -11,10 +13,11 @@ public class Technology {
     int		doubleCapacity;
     int		overfulfilCapacity;
 
+
     public Technology() {
     }
 
-    public Technology(String technologyId, String technologyName, double price, String vitalProcessPeriod, int standardCapacity, int overtimeStandardCapacity, int overtimeOverfulfilCapacity, int doubleCapacity, int overfulfilCapacity) {
+    public Technology(String technologyId, String technologyName, double price, String vitalProcessPeriod, int standardCapacity, int overtimeStandardCapacity, int overtimeOverfulfilCapacity, int doubleCapacity, int overfulfilCapacity, List<TechnologyRequirement> technologyRequirements) {
         this.technologyId = technologyId;
         this.technologyName = technologyName;
         this.price = price;
@@ -98,9 +101,10 @@ public class Technology {
         this.overfulfilCapacity = overfulfilCapacity;
     }
 
+
     @Override
     public String toString() {
-        return "bean.Technology{" +
+        return "Technology{" +
                 "technologyId='" + technologyId + '\'' +
                 ", technologyName='" + technologyName + '\'' +
                 ", price=" + price +
