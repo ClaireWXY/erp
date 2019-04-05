@@ -33,6 +33,12 @@
     from work
     where work_id = #{workId,jdbcType=VARCHAR}
   </select>
+
+  <!--查找所有的work记录-->
+  <select id="selectAllWork" resultMap="BaseResultMap">
+    select * from work;
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated
