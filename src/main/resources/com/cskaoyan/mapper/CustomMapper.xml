@@ -25,10 +25,21 @@
     note
   </sql>
 
+
   <!--查询所有的custom-->
   <select id="selectAllCustom" resultMap="BaseResultMap">
     select * from custom
   </select>
+
+
+  <!--根据客户名称查询客户数据-->
+  <select id="selectByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from custom
+    where custom_name = #{customName}
+  </select>
+
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--
@@ -50,6 +61,19 @@
     delete from custom
     where custom_id = #{customId,jdbcType=VARCHAR}
   </delete>
+
+
+
+  <!--自己添加：根据ids，删除多条数据-->
+  <delete id="deleteBatchCustomByIds">
+    delete from custom where custom_id in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+
+
   <insert id="insert" parameterType="com.cskaoyan.bean.Custom">
     <!--
       WARNING - @mbg.generated

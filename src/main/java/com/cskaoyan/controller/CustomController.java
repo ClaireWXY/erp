@@ -3,6 +3,7 @@ package com.cskaoyan.controller;
 import com.cskaoyan.bean.Custom;
 import com.cskaoyan.bean.Tip;
 import com.cskaoyan.service.CustomService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +25,21 @@ public class CustomController {
         return "";
     }
 
-    //查询所有数据，不分页
+    //查询所有数据
     @RequestMapping("find")
     public String findCustom(){
         return "custom_list";
     }
 
+
+
     @RequestMapping("list")
     @ResponseBody
+   /* //分页查询
+    public ArrayList<Custom> customList(int page,int rows){
+        ArrayList<Custom> customList = customService.selectAllCustom(page,rows);
+        return customList;
+    }*/
     public ArrayList<Custom> customList(){
         ArrayList<Custom> customList = customService.selectAllCustom();
         return customList;
@@ -50,7 +58,7 @@ public class CustomController {
         return "custom_add";
     }
 
-    //前台总是显示undefined
+    //前端总是显示undefined
     //组长优化代码:增加Tip类，返回Json数据到前端,正常显示
     @RequestMapping("insert")
     @ResponseBody
@@ -61,5 +69,48 @@ public class CustomController {
             return new Tip("200","增加客户成功。",null);
         }
         return new Tip("0","添加失败。",null);
+    }
+
+    //根据主键删除客户数据
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Tip deletleBatchByIds(String[] ids){
+        boolean b = customService.deleteBatchCustomByIds(ids);
+        if(b){
+            return new Tip("200","删除客户成功。",null);
+        }
+        return new Tip("0","删除失败。",null);
+    }
+
+    //根据键，修改一条客户数据
+    @RequestMapping("edit")
+    public String edit(){
+        return "custom_edit";
+    }
+
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Tip updateCustom(Custom custom){
+        boolean b = customService.updateCustomById(custom);
+        if (b){
+            return new Tip("200","修改客户成功。",null);
+        }
+        return new Tip("0","修改失败。",null);
+    }
+
+    //根据客户编号查询客户信息
+    @RequestMapping("search_custom_by_customId")
+    @ResponseBody
+    public Custom selectCustomById(String customId){
+        Custom custom = customService.selectCustomById(customId);
+        return custom;
+    }
+
+    //根据客户的名称查询客户信息
+    @RequestMapping("search_custom_by_customName")
+    @ResponseBody
+    public ArrayList<Custom> selectCustomByName(String customName){
+        ArrayList<Custom> customList= customService.selectCustomByName(customName);
+        return customList;
     }
 }

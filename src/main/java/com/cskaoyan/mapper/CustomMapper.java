@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface CustomMapper {
     int deleteByPrimaryKey(String customId);
 
-    int    insert(Custom record);
+    int  insert(Custom record);
 
     int insertSelective(Custom custom);
 
@@ -18,4 +18,8 @@ public interface CustomMapper {
     int updateByPrimaryKey(Custom record);
 
     ArrayList<Custom> selectAllCustom();
+
+    int deleteBatchCustomByIds(@Param("ids") String[] ids);
+
+    ArrayList<Custom> selectByName(@Param("customName") String customName);
 }
