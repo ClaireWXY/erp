@@ -8,11 +8,20 @@ public class MaterialReceive {
     String	sender;
     String	receiver;
     String	note;
+    Material material;
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
 
     public MaterialReceive() {
     }
 
-    public MaterialReceive(String receiveId, String materialId, int amount, String receiveDate, String sender, String receiver, String note) {
+    public MaterialReceive(String receiveId, String materialId, int amount, String receiveDate, String sender, String receiver, String note, Material material) {
         this.receiveId = receiveId;
         this.materialId = materialId;
         this.amount = amount;
@@ -20,6 +29,7 @@ public class MaterialReceive {
         this.sender = sender;
         this.receiver = receiver;
         this.note = note;
+        this.material = material;
     }
 
     public String getReceiveId() {
@@ -80,7 +90,7 @@ public class MaterialReceive {
 
     @Override
     public String toString() {
-        return "bean.MaterialReceive{" +
+        return "MaterialReceive{" +
                 "receiveId='" + receiveId + '\'' +
                 ", materialId='" + materialId + '\'' +
                 ", amount=" + amount +
@@ -88,6 +98,7 @@ public class MaterialReceive {
                 ", sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
                 ", note='" + note + '\'' +
+                ", material=" + material +
                 '}';
     }
 }

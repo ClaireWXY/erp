@@ -126,5 +126,11 @@ public class MaterialController {
         return materialList;
     }
 
-
+    //MaterialReceive里面要使用material
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Material> get_data() {
+        List<Material> materialList = materialService.selectAllMaterial();
+        return  materialList;
+    }
 }

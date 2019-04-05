@@ -2,6 +2,9 @@ package com.cskaoyan.mapper;
 
 
 import com.cskaoyan.bean.MaterialReceive;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface MaterialReceiveMapper {
     int deleteByPrimaryKey(String receiveId);
@@ -15,4 +18,10 @@ public interface MaterialReceiveMapper {
     int updateByPrimaryKeySelective(MaterialReceive record);
 
     int updateByPrimaryKey(MaterialReceive record);
+
+    List<MaterialReceive> selectPageMaterialReceive(@Param("limit") int limit, @Param("offset") int offset);
+
+    List<MaterialReceive> selectPageMaterialReceiveByReceiveId(@Param("receiveId") String receiveId, @Param("limit")int limit, @Param("offset")int offset);
+
+    List<MaterialReceive> selectPageMaterialReceiveByMaterialId(@Param("materialId")String materialId, @Param("limit")int limit,  @Param("offset")int offset);
 }

@@ -34,6 +34,88 @@
     from material_receive
     where receive_id = #{receiveId,jdbcType=VARCHAR}
   </select>
+
+  <!--显示分页materialReceive-->
+  <resultMap id="MaterialReceiveMap" type="com.cskaoyan.bean.MaterialReceive">
+    <result column="receive_id" property="receiveId"/>
+    <result column="amount" property="amount"/>
+    <result column="receive_date" property="receiveDate"/>
+    <result column="sender" property="sender"/>
+    <result column="receiver" property="receiver"/>
+    <result column="note" property="note"/>
+    <collection property="material" ofType="com.cskaoyan.bean.Material">
+      <result column="material_id" property="materialId"/>
+      <result column="material_type" property="materialType"/>
+      <result column="status" property="status"/>
+      <result column="remaining" property="remaining"/>
+      <result column="note" property="note"/>
+    </collection>
+  </resultMap>
+
+  <select id="selectPageMaterialReceive" resultMap="MaterialReceiveMap">
+    select
+    mr.receive_id,m.material_id,
+    m.material_id,m.material_type,m.status,m.remaining,m.note,
+    mr.amount,mr.receive_date,mr.sender,mr.receiver,mr.note
+    from material_receive mr left join material m on mr.material_id = m.material_id
+    limit #{limit} offset #{offset}
+  </select>
+
+  <!--按照materialReceive的id查找，显示分页materialReceive-->
+  <resultMap id="MaterialReceiveByIdMap" type="com.cskaoyan.bean.MaterialReceive">
+    <result column="receive_id" property="receiveId"/>
+    <result column="amount" property="amount"/>
+    <result column="receive_date" property="receiveDate"/>
+    <result column="sender" property="sender"/>
+    <result column="receiver" property="receiver"/>
+    <result column="note" property="note"/>
+    <collection property="material" ofType="com.cskaoyan.bean.Material">
+      <result column="material_id" property="materialId"/>
+      <result column="material_type" property="materialType"/>
+      <result column="status" property="status"/>
+      <result column="remaining" property="remaining"/>
+      <result column="note" property="note"/>
+    </collection>
+  </resultMap>
+
+  <select id="selectPageMaterialReceiveByReceiveId" resultMap="MaterialReceiveByIdMap">
+    select
+    mr.receive_id,
+    m.material_id,m.material_type,m.status,m.remaining,m.note,
+    mr.amount,mr.receive_date,mr.sender,mr.receiver,mr.note
+    from material_receive mr left join material m on mr.material_id = m.material_id
+    where mr.receive_id = #{receiveId}
+    limit #{limit} offset #{offset}
+  </select>
+
+  <!--按照materialId查找，显示分页materialReceive-->
+  <resultMap id="MaterialReceiveByMaterialIdMap" type="com.cskaoyan.bean.MaterialReceive">
+    <result column="receive_id" property="receiveId"/>
+    <result column="amount" property="amount"/>
+    <result column="receive_date" property="receiveDate"/>
+    <result column="sender" property="sender"/>
+    <result column="receiver" property="receiver"/>
+    <result column="note" property="note"/>
+    <collection property="material" ofType="com.cskaoyan.bean.Material">
+      <result column="material_id" property="materialId"/>
+      <result column="material_type" property="materialType"/>
+      <result column="status" property="status"/>
+      <result column="remaining" property="remaining"/>
+      <result column="note" property="note"/>
+    </collection>
+  </resultMap>
+
+  <select id="selectPageMaterialReceiveByMaterialId" resultMap="MaterialReceiveByMaterialIdMap">
+    select
+    mr.receive_id,
+    m.material_id,m.material_type,m.status,m.remaining,m.note,
+    mr.amount,mr.receive_date,mr.sender,mr.receiver,mr.note
+    from material_receive mr left join material m on mr.material_id = m.material_id
+    where m.material_id = #{materialId}
+    limit #{limit} offset #{offset}
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated
@@ -43,6 +125,7 @@
     delete from material_receive
     where receive_id = #{receiveId,jdbcType=VARCHAR}
   </delete>
+<!--添加一条materialReceive记录-->
   <insert id="insert" parameterType="com.cskaoyan.bean.MaterialReceive">
     <!--
       WARNING - @mbg.generated
@@ -56,6 +139,7 @@
       #{receiveDate,jdbcType=TIMESTAMP}, #{sender,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, 
       #{note,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.cskaoyan.bean.MaterialReceive">
     <!--
       WARNING - @mbg.generated
