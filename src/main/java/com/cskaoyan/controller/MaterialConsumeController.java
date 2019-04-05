@@ -83,8 +83,8 @@ public class MaterialConsumeController {
 
     @RequestMapping("update_note")
     @ResponseBody
-    public Tip update_note(String consumeId,String note){
-        int result = materialConsumeService.updateMaterialConsumeNoteById(consumeId,note);
+    public Tip update_note(MaterialConsume materialConsume){
+        int result = materialConsumeService.updateMaterialConsumeNoteById(materialConsume);
         Tip tip;
         if(result==1){
             tip = new Tip("200","物料消费修改成功",null);;

@@ -23,6 +23,6 @@ public interface MaterialConsumeService {
 
     List<MaterialReceive> selectSearchPageMaterialConsumeByWorkId(String searchValue, int limit, int offset);
 
-    int updateMaterialConsumeNoteById(String consumeId, String note);
+    int updateMaterialConsumeNoteById(MaterialConsume materialConsume);
 
 }

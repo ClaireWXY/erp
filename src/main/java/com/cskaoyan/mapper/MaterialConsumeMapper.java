@@ -28,5 +28,5 @@ public interface MaterialConsumeMapper {
 
     List<MaterialReceive> selectSearchPageMaterialConsumeByWorkId(@Param("work_id") String work_id, @Param("limit")int limit, @Param("offset")int offset);
 
-    int updateMaterialConsumeNoteById(@Param("consume_id") String consume_id, @Param("note") String note);
+    int updateMaterialConsumeNoteById(@Param("materialConsume") MaterialConsume materialConsume);
 }

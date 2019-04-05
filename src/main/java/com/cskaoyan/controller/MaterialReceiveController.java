@@ -29,7 +29,7 @@ public class MaterialReceiveController {
     //查找materialreceive
     @RequestMapping("list")
     @ResponseBody
-    public Map list(int page, int rows) {
+    public Map<String,Object> list(int page, int rows) {
         int limit = rows;
         int offset = (page - 1) * rows;
         List<MaterialReceive> materialReceiveList = materialReceiveService.selectPageMaterialReceive(limit, offset);
@@ -86,7 +86,7 @@ public class MaterialReceiveController {
         return tip;
     }
 
-    /*@RequestMapping("update_note")
+    @RequestMapping("update_note")
     @ResponseBody
     public Tip update_note(String receiveId,String note){
         int result = materialReceiveService.updateMaterialReceiveNoteById(receiveId,note);
@@ -97,7 +97,7 @@ public class MaterialReceiveController {
             tip = new Tip("500","物料消费修改失败",null);
         }
         return tip;
-    }*/
+    }
 
     @RequestMapping("delete_batch")
     @ResponseBody
