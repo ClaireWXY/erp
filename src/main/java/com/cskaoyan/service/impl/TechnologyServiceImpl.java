@@ -37,6 +37,12 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     @Override
+    public List<Technology> getData() {
+        List<Technology> allTechnology = technologyMapper.findAllTechnology();
+        return allTechnology;
+    }
+
+    @Override
     public boolean addTechnology(Technology technology) {
         int insert = technologyMapper.insert(technology);
         return insert==1;
@@ -52,5 +58,11 @@ public class TechnologyServiceImpl implements TechnologyService {
     public boolean deleteBatchTechnology(String[] ids) {
         int deleteBatchTechnologyByIds = technologyMapper.deleteBatchTechnologyByIds(ids);
         return deleteBatchTechnologyByIds==1;
+    }
+
+    @Override
+    public Technology queryTechnologyById(String id) {
+        Technology technology = technologyMapper.selectByPrimaryKey(id);
+        return technology;
     }
 }

@@ -28,7 +28,7 @@ public class DeviceTypeController
     }
 
     /**
-     * 查询所有设备种类
+     * 分页查询所有设备种类
      * @param page
      * @param rows
      * @return

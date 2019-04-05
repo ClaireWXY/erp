@@ -1,19 +1,18 @@
 package com.cskaoyan.controller;
 
-import com.cskaoyan.bean.Material;
+
 import com.cskaoyan.bean.MaterialReceive;
 import com.cskaoyan.bean.Tip;
 import com.cskaoyan.service.MaterialReceiveService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("materialReceive")
@@ -30,11 +29,14 @@ public class MaterialReceiveController {
     //查找materialreceive
     @RequestMapping("list")
     @ResponseBody
-    public List<MaterialReceive> list(int page, int rows) {
+    public Map<String,Object> list(int page, int rows) {
         int limit = rows;
         int offset = (page - 1) * rows;
         List<MaterialReceive> materialReceiveList = materialReceiveService.selectPageMaterialReceive(limit, offset);
-        return materialReceiveList;
+        Map<String,Object> hashMap = new HashMap<>();
+        hashMap.put("total",materialReceiveList.size());
+        hashMap.put("rows",materialReceiveList);
+        return hashMap;
     }
 
 
@@ -58,7 +60,7 @@ public class MaterialReceiveController {
         int result = materialReceiveService.insertOneMaterialReceive(materialReceive);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料收入添加成功",null);;
+            tip = new Tip("200","物料收入添加成功",null);
         } else{
             tip = new Tip("500","物料收入添加失败",null);
         }
@@ -77,25 +79,26 @@ public class MaterialReceiveController {
         int result = materialReceiveService.updateMaterialReceive(materialReceive);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料收入修改成功",null);;
+            tip = new Tip("200","物料收入修改成功",null);
         } else{
             tip = new Tip("500","物料收入修改失败",null);
         }
         return tip;
     }
 
-/*    @RequestMapping("update_note")
+    @RequestMapping("update_note")
     @ResponseBody
-    public Tip update_note(String note) {
-        int result = materialReceiveService.updateMaterialReceiveNote(note);
+    public Tip update_note(String receiveId,String note){
+        int result = materialReceiveService.updateMaterialReceiveNoteById(receiveId,note);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料收入备注修改成功",null);
+            tip = new Tip("200","物料消费修改成功",null);
         } else{
-            tip = new Tip("500","物料收入备注修改失败",null);
+            tip = new Tip("500","物料消费修改失败",null);
         }
         return tip;
-    }*/
+    }
+
     @RequestMapping("delete_batch")
     @ResponseBody
     public Tip delete_batch(@RequestParam("ids") String[] ids) {
@@ -109,7 +112,7 @@ public class MaterialReceiveController {
         }
         Tip tip;
         if(count == ids.length){
-            tip = new Tip("200","物料收入成功",null);;
+            tip = new Tip("200","物料收入成功",null);
         } else{
             tip = new Tip("500","物料收入失败",null);
         }

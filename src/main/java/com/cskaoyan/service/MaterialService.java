@@ -27,4 +27,8 @@ public interface MaterialService {
     List<Material> selectSearchPageMaterialById(String materialId, int limit, int offset);
 
     List<Material> selectSearchPageMaterialByType(String materialType, int limit, int offset);
+
+    Material getMaterialById(String materialId);
+
+    int updateMaterialNoteById(String materialId, String note);
 }

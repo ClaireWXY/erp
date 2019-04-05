@@ -151,4 +151,8 @@
       note = #{note,jdbcType=VARCHAR}
     where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
+
+    <update id="updateMaterialNoteById" >
+        update material set note = #{note} where material_id = #{materialId}
+    </update>
 </mapper>

@@ -1,4 +1,8 @@
-package com.cskaoyan.convertor;
+package com.cskaoyan.util;
+
+/**
+ * Created by Fancy on 2019/4/5
+ */
 
 import org.springframework.core.convert.converter.Converter;
 
@@ -6,14 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author Wang Xueyang
- * @create 2019-04-05
- */
 
-/**
- * String型 转 Date型
- */
 public class DateConverter implements Converter<String, Date> {
     @Override
     public Date convert(String s) {

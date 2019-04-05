@@ -8,4 +8,5 @@ public interface WorkService {
     List<Work> selectAllWork();
 
 
+    Work getWorkById(String workId);
 }

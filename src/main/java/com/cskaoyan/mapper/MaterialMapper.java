@@ -29,4 +29,5 @@ public interface MaterialMapper {
 
     List<Material> selectPageMaterialByType(@Param("materialType") String materialType, @Param("limit") int limit, @Param("offset") int offset);
 
+    int updateMaterialNoteById(@Param("materialId")String materialId, @Param("note")String note);
 }
