@@ -126,4 +126,12 @@ public class TechnologyController {
         return technology;
     }
 
+    //获取工艺信息
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Technology> getData(){
+        List<Technology> data = technologyService.getData();
+        return data;
+    }
+
 }

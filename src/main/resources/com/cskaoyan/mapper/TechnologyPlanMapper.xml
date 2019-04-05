@@ -168,4 +168,55 @@
       technology_plan_end = #{technologyPlanEnd,jdbcType=TIMESTAMP}
     where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
   </update>
+
+  <resultMap id="planMap" type="com.cskaoyan.bean.TechnologyPlan">
+    <id column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
+    <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <result column="batch_amount" jdbcType="INTEGER" property="batchAmount" />
+    <result column="start_plan" jdbcType="TIMESTAMP" property="startPlan" />
+    <result column="end_plan" jdbcType="TIMESTAMP" property="endPlan" />
+    <result column="commit_plan" jdbcType="TIMESTAMP" property="commitPlan" />
+    <result column="technology_plan_start" jdbcType="TIMESTAMP" property="technologyPlanStart" />
+    <result column="technology_plan_end" jdbcType="TIMESTAMP" property="technologyPlanEnd" />
+    <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+  </resultMap>
+  
+  <select id="queryAllTechnologyPlan" resultMap="planMap">
+     select *
+     from technology_plan tp inner join technology t
+     on tp.technology_id = t.technology_id
+     limit #{rows} offset #{offset}
+  </select>
+
+  <select id="searchTechnologyPlanByTechnologyPlanId" resultMap="planMap">
+      select *
+      from technology_plan tp inner join technology t
+      on tp.technology_id = t.technology_id
+      where technology_plan_id = #{technologyPlanId}
+      limit #{rows} offset #{offset}
+  </select>
+
+  <select id="countByTechnologyName" resultType="_int">
+    select count(*)
+    from technology_plan tp inner join technology t
+    on tp.technology_id = t.technology_id
+    where technology_name =#{technologyName}
+  </select>
+
+  <select id="searchTechnologyPlanByTechnologyName" resultMap="planMap">
+    select *
+    from technology_plan tp inner join technology t
+    on tp.technology_id = t.technology_id
+    where technology_name =#{technologyName}
+  </select>
+
+  <delete id="deleteBatchTechnologyPlanByIds" >
+    delete from technology_plan
+    where technology_plan_id in (
+    <foreach collection="array" item="id" separator=",">
+      #{id}
+    </foreach>
+    )
+  </delete>
+
 </mapper>

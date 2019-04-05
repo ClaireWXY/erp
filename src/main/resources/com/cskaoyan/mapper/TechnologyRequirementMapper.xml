@@ -183,8 +183,5 @@
     </foreach>)
   </delete>
 
-  <insert id="insertTechnologyRequirement" >
-
-  </insert>
 
 </mapper>
