@@ -3,10 +3,11 @@ package com.cskaoyan.controller;
 import com.cskaoyan.bean.Tip;
 import com.cskaoyan.bean.Technology;
 import com.cskaoyan.service.TechnologyService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class TechnologyController {
      */
     @RequestMapping("list")
     @ResponseBody
-    public List<Technology> list(@Param("page") Integer page, @Param("rows") Integer rows) {
+    public List<Technology> list(@RequestParam("page") Integer page, @RequestParam("rows") Integer rows) {
         List<Technology> technologies = technologyService.queryAllTechnology(page, rows);
         return technologies;
     }
@@ -48,7 +49,7 @@ public class TechnologyController {
      */
     @RequestMapping("search_technology_by_technologyId")
     @ResponseBody
-    public List<Technology> search_technology_by_technologyId(@Param("searchValue") String searchValue,@Param("page") Integer page, @Param("rows") Integer rows){
+    public List<Technology> search_technology_by_technologyId(@RequestParam("searchValue") String searchValue,@RequestParam("page") Integer page, @RequestParam("rows") Integer rows){
         List<Technology> technologies = technologyService.searchTechnologyByTechnologyId(searchValue, page, rows);
         return technologies;
     }
@@ -58,16 +59,17 @@ public class TechnologyController {
      */
     @RequestMapping("search_technology_by_technologyName")
     @ResponseBody
-    public List<Technology> search_technology_by_technologyName(@Param("searchValue") String searchValue,@Param("page") Integer page, @Param("rows") Integer rows){
+    public List<Technology> search_technology_by_technologyName(@RequestParam("searchValue") String searchValue,@RequestParam("page") Integer page, @RequestParam("rows") Integer rows){
         List<Technology> technologies = technologyService.searchTeachnologyByTechnologyName(searchValue, page, rows);
         return technologies;
     }
 
     /**
      * 增加一条工艺数据
+     * @return
      */
     @RequestMapping("add")
-    public String add(@Param("technology") Technology technology){
+    public String add(){
         return "technology_add";
     }
 
@@ -81,8 +83,13 @@ public class TechnologyController {
         return new Tip("0","添加失败。",null);
     }
 
+    /**
+     * 修改工艺信息
+     * @param
+     * @return
+     */
     @RequestMapping("edit")
-    public String edit(@Param("technology") Technology technology){
+    public String edit(){
         return "technology_edit";
     }
 
@@ -96,14 +103,27 @@ public class TechnologyController {
         return new Tip("0","修改失败",null);
     }
 
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
     @RequestMapping("delete_batch")
     @ResponseBody
-    public Tip delete_batch(@Param("ids") String[] ids){
+    public Tip delete_batch(@RequestParam("ids") String[] ids){
         boolean deleteTechnology = technologyService.deleteBatchTechnology(ids);
         if (deleteTechnology){
             return new Tip("200","删除工艺成功",null);
         }
         return new Tip("0","删除失败",null);
+    }
+
+    //工艺要求和工艺计划需要的，get请求，可以编辑信息
+    @RequestMapping("/get/{technologyId}")
+    @ResponseBody
+    public Technology get(@PathVariable("technologyId") String technologyId){
+        Technology technology = technologyService.queryTechnologyById(technologyId);
+        return technology;
     }
 
 }

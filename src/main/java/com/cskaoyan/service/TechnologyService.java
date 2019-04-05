@@ -16,7 +16,9 @@ public interface TechnologyService {
    List<Technology> queryAllTechnology(Integer page,Integer rows);
    List<Technology> searchTechnologyByTechnologyId(String technologyId,Integer page,Integer rows);
    List<Technology> searchTeachnologyByTechnologyName(String technologyName,Integer page,Integer rows);
+   List<Technology> getData();
    boolean addTechnology(Technology technology);
    boolean editTechnology(Technology technology);
    boolean deleteBatchTechnology(String[] ids);
+   Technology queryTechnologyById(String id);
 }

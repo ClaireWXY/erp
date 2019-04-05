@@ -4,6 +4,10 @@ package com.cskaoyan.bean;
  * @author Wang Xueyang
  * @create 2019-04-04
  */
+
+/**
+ * 增删改查时使用的返回值
+ */
 public class Tip {
      private String status;
      private String msg;
