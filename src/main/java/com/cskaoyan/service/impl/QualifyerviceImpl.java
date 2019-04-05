@@ -1,6 +1,7 @@
 package com.cskaoyan.service.impl;
 
 import com.cskaoyan.bean.PageUnQualifyList;
+import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.bean.UnqualifyApplyVo;
 import com.cskaoyan.mapper.UnqualifyApplyMapper;
 import com.cskaoyan.service.QualifyService;
@@ -22,6 +23,26 @@ public class QualifyerviceImpl implements QualifyService {
         unqualifyApplyVo.setTotal(i);
         unqualifyApplyVo.setRows(pageUnQualifyList);
         return unqualifyApplyVo;
+    }
+
+    @Override
+    public TotalAndList findUnqualifyByUnqulifyId(String searchValue, int page, int rows) {
+        List<PageUnQualifyList> pageUnQualifyListById = unqualifyApplyMapper.findPageUnQualifyListById(searchValue, page, rows);
+        int i1 = unqualifyApplyMapper.UnqualifyCountById(searchValue);
+        TotalAndList totalAndList = new TotalAndList();
+        totalAndList.setTotal(i1);
+        totalAndList.setRows(pageUnQualifyListById);
+        return totalAndList;
+    }
+
+    @Override
+    public TotalAndList findUnqualifyByProductName(String searchValue, int page, int rows) {
+        List<PageUnQualifyList> pageUnQualifyListByProductName = unqualifyApplyMapper.findPageUnQualifyListByProductName(searchValue, page, rows);
+        int i = unqualifyApplyMapper.UnqualifyCountByProductName(searchValue);
+        TotalAndList totalAndList = new TotalAndList();
+        totalAndList.setTotal(i);
+        totalAndList.setRows(pageUnQualifyListByProductName);
+        return totalAndList;
     }
 
 

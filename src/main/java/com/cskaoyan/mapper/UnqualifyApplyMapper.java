@@ -21,5 +21,14 @@ public interface UnqualifyApplyMapper {
 
     int UnqualifyCount();
 
+
     List<PageUnQualifyList> findPageUnQualifyList(@Param("page") int page , @Param("rows") int rows);
+
+    List<PageUnQualifyList> findPageUnQualifyListById(@Param("id") String searchValue,@Param("page") int page , @Param("rows") int rows);
+
+    int UnqualifyCountById(@Param("id") String searchValue);
+
+    List<PageUnQualifyList> findPageUnQualifyListByProductName(@Param("productName") String searchValue,@Param("page") int page , @Param("rows") int rows);
+
+    int UnqualifyCountByProductName(@Param("productName") String searchValue);
 }

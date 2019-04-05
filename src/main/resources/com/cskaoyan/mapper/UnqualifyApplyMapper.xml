@@ -194,4 +194,52 @@
     unqualify_apply.product_id=product.product_id and unqualify_apply.emp_id=employee.emp_id
     limit #{page} , #{rows}
   </select>
+
+  <select id="findPageUnQualifyListById" resultType="com.cskaoyan.bean.PageUnQualifyList">
+   SELECT
+    unqualify_apply.unqualify_apply_id as unqualifyApplyId,
+    unqualify_apply.product_id as productId,
+    unqualify_apply.unqualify_item as unqualifyItem,
+    unqualify_apply.unqualify_count as unqualifyCount,
+    unqualify_apply.assembly_date as assemblyDate,
+    unqualify_apply.emp_id as empId,
+    unqualify_apply.apply_date as applyDate,
+    unqualify_apply.note as note ,
+    product.product_name as productName ,
+    employee.emp_name as empName
+    from unqualify_apply,
+    product, employee
+    where
+    unqualify_apply.product_id=product.product_id and unqualify_apply.emp_id=employee.emp_id
+    and unqualify_apply.unqualify_apply_id like CONCAT('%',#{id},'%')
+    limit #{page} , #{rows}
+
+  </select>
+  <select id="UnqualifyCountById" resultType="_int">
+    select count(*) from unqualify_apply where unqualify_apply_id like CONCAT('%',#{id},'%')
+  </select>
+
+  <select id="findPageUnQualifyListByProductName" resultType="com.cskaoyan.bean.PageUnQualifyList">
+   SELECT
+    unqualify_apply.unqualify_apply_id as unqualifyApplyId,
+    unqualify_apply.product_id as productId,
+    unqualify_apply.unqualify_item as unqualifyItem,
+    unqualify_apply.unqualify_count as unqualifyCount,
+    unqualify_apply.assembly_date as assemblyDate,
+    unqualify_apply.emp_id as empId,
+    unqualify_apply.apply_date as applyDate,
+    unqualify_apply.note as note ,
+    product.product_name as productName ,
+    employee.emp_name as empName
+    from unqualify_apply,
+    product, employee
+    where
+    unqualify_apply.product_id=product.product_id and unqualify_apply.emp_id=employee.emp_id
+    and product.product_name like CONCAT('%',#{productName},'%')
+    limit #{page} , #{rows}
+
+  </select>
+  <select id="UnqualifyCountByProductName" resultType="_int">
+    select count(*) from unqualify_apply where product_name like CONCAT('%',#{productName},'%')
+  </select>
 </mapper>
