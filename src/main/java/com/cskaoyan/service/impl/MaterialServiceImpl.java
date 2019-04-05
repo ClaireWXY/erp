@@ -99,4 +99,23 @@ public class MaterialServiceImpl implements MaterialService {
         List<Material> materialList = materialMapper.selectPageMaterialByType(materialType,limit,offset);
         return materialList;
     }
+
+    /**
+     * 点击id回显
+     * @param materialId
+     * @return
+     */
+    @Override
+    public Material getMaterialById(String materialId) {
+        Material material = materialMapper.selectByPrimaryKey(materialId);
+        return material;
+    }
+
+    @Override
+    public int updateMaterialNoteById(String materialId, String note) {
+        int i = materialMapper.updateMaterialNoteById(materialId,note);
+        return i;
+    }
+
+
 }

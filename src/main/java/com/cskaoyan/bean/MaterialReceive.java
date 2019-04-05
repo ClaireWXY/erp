@@ -2,13 +2,14 @@ package com.cskaoyan.bean;
 
 public class MaterialReceive {
     String	receiveId;
+    Material material;
     String	materialId;
     int		amount;
     String	receiveDate;
     String	sender;
     String	receiver;
     String	note;
-    Material material;
+
 
     public Material getMaterial() {
         return material;

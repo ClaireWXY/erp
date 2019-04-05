@@ -7,6 +7,7 @@ import com.cskaoyan.service.MaterialService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -132,5 +133,23 @@ public class MaterialController {
     public List<Material> get_data() {
         List<Material> materialList = materialService.selectAllMaterial();
         return  materialList;
+    }
+    @RequestMapping("get/{materialId}")
+    @ResponseBody
+    public Material get(@PathVariable("materialId")String materialId) {
+        return materialService.getMaterialById(materialId);
+    }
+
+    @RequestMapping("update_note")
+    @ResponseBody
+    public Tip update_note(String materialId,String note){
+        int result = materialService.updateMaterialNoteById(materialId,note);
+        Tip tip;
+        if(result==1){
+            tip = new Tip("200","物料修改成功",null);;
+        } else{
+            tip = new Tip("500","物料修改失败",null);
+        }
+        return tip;
     }
 }

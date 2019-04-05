@@ -238,4 +238,8 @@
       note = #{note,jdbcType=VARCHAR}
     where receive_id = #{receiveId,jdbcType=VARCHAR}
   </update>
+
+    <update id="updateMaterialReceiveNoteById">
+        update material_receive set note = #{note} where receive_id = #{receiveId}
+    </update>
 </mapper>

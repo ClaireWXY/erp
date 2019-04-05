@@ -36,6 +36,49 @@
     from material_consume
     where consume_id = #{consumeId,jdbcType=VARCHAR}
   </select>
+
+  <!--分页显示materialConsume-->
+  <resultMap id="MaterialConsumeMap" type="com.cskaoyan.bean.MaterialConsume">
+    <result column="consume_id" property="consumeId"/>
+    <result column="consume_amount" property="consumeAmount"/>
+    <result column="consume_date" property="consumeDate"/>
+    <result column="sender" property="sender"/>
+    <result column="receiver" property="receiver"/>
+    <result column="note" property="note"/>
+    <collection property="material" column="material_id"
+                select="com.cskaoyan.mapper.MaterialMapper.selectByPrimaryKey"/>
+    <collection property="work" column="work_id"
+                select="com.cskaoyan.mapper.WorkMapper.selectByPrimaryKey"/>
+<!--      <result column="material_id" property="materialId"/>
+      <result column="material_type" property="materialType"/>
+      <result column="status" property="status"/>
+      <result column="remaining" property="remaining"/>
+      <result column="note" property="note"/>
+   -->
+  </resultMap>
+  <!--查找所有的consume记录-->
+  <select id="selectPageMaterialConsume" resultMap="MaterialConsumeMap">
+    select consume_id,work_id,material_id,consume_amount,consume_date,sender,receiver,note from material_consume
+  </select>
+
+  <!--按consume_id查找一条consume记录-->
+  <select id="selectSearchPageMaterialConsumeByConsumeId" resultMap="MaterialConsumeMap">
+    select consume_id,work_id,material_id,consume_amount,consume_date,sender,receiver,note from material_consume
+    where consume_id = #{consume_id} limit #{limit} offset #{offset}
+  </select>
+
+  <!--按material_id查找一条consume记录-->
+  <select id="selectSearchPageMaterialConsumeByMaterialId" resultMap="MaterialConsumeMap">
+    select consume_id,work_id,material_id,consume_amount,consume_date,sender,receiver,note from material_consume
+    where material_id = #{material_id} limit #{limit} offset #{offset}
+  </select>
+
+  <!--按work_id查找一条consume记录-->
+  <select id="selectSearchPageMaterialConsumeByWorkId" resultMap="MaterialConsumeMap">
+    select consume_id,work_id,material_id,consume_amount,consume_date,sender,receiver,note from material_consume
+    where work_id = #{work_id} limit #{limit} offset #{offset}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated
@@ -165,5 +208,9 @@
       receiver = #{receiver,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR}
     where consume_id = #{consumeId,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateMaterialConsumeNoteById" parameterType="com.cskaoyan.bean.MaterialConsume">
+    upadte material_consume set note = #{note} where consume_id = #{consume_id}
   </update>
 </mapper>
