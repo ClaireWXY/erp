@@ -60,7 +60,7 @@ public class MaterialReceiveController {
         int result = materialReceiveService.insertOneMaterialReceive(materialReceive);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料收入添加成功",null);;
+            tip = new Tip("200","物料收入添加成功",null);
         } else{
             tip = new Tip("500","物料收入添加失败",null);
         }
@@ -79,7 +79,7 @@ public class MaterialReceiveController {
         int result = materialReceiveService.updateMaterialReceive(materialReceive);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料收入修改成功",null);;
+            tip = new Tip("200","物料收入修改成功",null);
         } else{
             tip = new Tip("500","物料收入修改失败",null);
         }
@@ -92,7 +92,7 @@ public class MaterialReceiveController {
         int result = materialReceiveService.updateMaterialReceiveNoteById(receiveId,note);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料消费修改成功",null);;
+            tip = new Tip("200","物料消费修改成功",null);
         } else{
             tip = new Tip("500","物料消费修改失败",null);
         }
@@ -112,7 +112,7 @@ public class MaterialReceiveController {
         }
         Tip tip;
         if(count == ids.length){
-            tip = new Tip("200","物料收入成功",null);;
+            tip = new Tip("200","物料收入成功",null);
         } else{
             tip = new Tip("500","物料收入失败",null);
         }

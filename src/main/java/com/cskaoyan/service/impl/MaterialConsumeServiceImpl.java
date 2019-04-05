@@ -105,7 +105,7 @@ public class MaterialConsumeServiceImpl implements MaterialConsumeService {
 
     @Override
     public int updateMaterialConsumeNoteById(MaterialConsume materialConsume) {
-        int i = materialConsumeMapper.updateByPrimaryKey(materialConsume);
+        int i = materialConsumeMapper.updateMaterialConsumeNoteById(materialConsume);
         return i;
     }
 }

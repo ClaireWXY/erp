@@ -73,7 +73,7 @@ public class MaterialConsumeController {
         int result = materialConsumeService.updateMaterialConsume(materialConsume);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料收入修改成功",null);;
+            tip = new Tip("200","物料收入修改成功",null);
         } else{
             tip = new Tip("500","物料收入修改失败",null);
         }
@@ -87,7 +87,7 @@ public class MaterialConsumeController {
         int result = materialConsumeService.updateMaterialConsumeNoteById(materialConsume);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料消费修改成功",null);;
+            tip = new Tip("200","物料消费修改成功",null);
         } else{
             tip = new Tip("500","物料消费修改失败",null);
         }
@@ -108,7 +108,7 @@ public class MaterialConsumeController {
         }
         Tip tip;
         if(count == ids.length){
-            tip = new Tip("200","物料消费删除成功",null);;
+            tip = new Tip("200","物料消费删除成功",null);
         } else{
             tip = new Tip("500","物料消费删除失败",null);
         }

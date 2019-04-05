@@ -3,13 +3,20 @@ package com.cskaoyan.bean;
 public class MaterialReceive {
     String	receiveId;
     Material material;
-    //String	materialId;
+    String	materialId;
     int		amount;
     String	receiveDate;
     String	sender;
     String	receiver;
     String	note;
 
+    public String getMaterialId() {
+        return materialId;
+    }
+
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
+    }
 
     public Material getMaterial() {
         return material;
@@ -27,6 +34,7 @@ public class MaterialReceive {
         return "MaterialReceive{" +
                 "receiveId='" + receiveId + '\'' +
                 ", material=" + material +
+                ", materialId='" + materialId + '\'' +
                 ", amount=" + amount +
                 ", receiveDate='" + receiveDate + '\'' +
                 ", sender='" + sender + '\'' +

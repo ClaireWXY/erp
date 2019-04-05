@@ -61,7 +61,7 @@ public class MaterialController {
        int result = materialService.insertOneMaterial(material);
        Tip tip;
        if(result==1){
-           tip = new Tip("200","物料添加成功",null);;
+           tip = new Tip("200","物料添加成功",null);
        } else{
            tip = new Tip("500","物料添加失败",null);
        }
@@ -80,7 +80,7 @@ public class MaterialController {
        int result = materialService.updateMaterial(material);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料修改成功",null);;
+            tip = new Tip("200","物料修改成功",null);
         } else{
             tip = new Tip("500","物料修改失败",null);
         }
@@ -100,7 +100,7 @@ public class MaterialController {
         }
         Tip tip;
         if(count == ids.length){
-            tip = new Tip("200","物料修改成功",null);;
+            tip = new Tip("200","物料修改成功",null);
         } else{
             tip = new Tip("500","物料修改失败",null);
         }
@@ -146,7 +146,7 @@ public class MaterialController {
         int result = materialService.updateMaterialNoteById(materialId,note);
         Tip tip;
         if(result==1){
-            tip = new Tip("200","物料修改成功",null);;
+            tip = new Tip("200","物料修改成功",null);
         } else{
             tip = new Tip("500","物料修改失败",null);
         }
