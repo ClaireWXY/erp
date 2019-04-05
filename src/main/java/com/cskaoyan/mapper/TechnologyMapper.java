@@ -26,4 +26,6 @@ public interface TechnologyMapper {
 
     int deleteBatchTechnologyByIds(String[] ids);
 
+
+
 }

@@ -1,9 +1,11 @@
 package com.cskaoyan.service.impl;
 
 import com.cskaoyan.bean.DeviceType;
-import com.cskaoyan.bean.Technology;
+import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.mapper.DeviceTypeMapper;
 import com.cskaoyan.service.DeviceTypeService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -25,11 +27,18 @@ public class DeviceTypeServiceImpl implements DeviceTypeService
      * @return
      */
     @Override
-    public List<DeviceType> queryDeviceTypeList(Integer page, Integer rows)
+    public TotalAndList queryDeviceTypeList(Integer page, Integer rows)
     {
-       // DeviceType deviceType = this.deviceTypeMapper.selectByPrimaryKey("device_type_id");
+        Page<Object> objects = PageHelper.startPage(page, rows);
+        //返回查询数据
         List<DeviceType> deviceTypes = this.deviceTypeMapper.queryAllDeviceType((page - 1) * rows, rows);
-        return deviceTypes;
+        //返回查询总记录数
+        int counts = deviceTypeMapper.deviceTypeCount();
+
+        TotalAndList totalAndList = new TotalAndList(counts, deviceTypes);
+        return totalAndList;
+//         List<DeviceType> deviceTypes = this.deviceTypeMapper.queryAllDeviceType((page - 1) * rows, rows);
+//         return deviceTypes;
     }
 
     /**
@@ -67,4 +76,28 @@ public class DeviceTypeServiceImpl implements DeviceTypeService
         int i = deviceTypeMapper.updateByPrimaryKey(record);
         return i==1;
     }
+
+    /**
+     * 分页查询
+     * @return
+     */
+    @Override
+    public List<DeviceType> queryDeviceTypeByPageAndSelections()
+    {
+
+        return null;
+    }
+
+    /**
+     * 获取总记录数
+     * @return
+     */
+    @Override
+    public int deviceTypeCount()
+    {
+        int counts = deviceTypeMapper.deviceTypeCount();
+        return counts;
+    }
+
+
 }

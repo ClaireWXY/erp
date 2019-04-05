@@ -2,14 +2,13 @@ package com.cskaoyan.controller.device;
 
 import com.cskaoyan.bean.DeviceType;
 import com.cskaoyan.bean.Tip;
+import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.service.DeviceTypeService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * @Author: OCW
@@ -43,10 +42,10 @@ public class DeviceTypeController
 
     @RequestMapping("deviceType/list")
     @ResponseBody
-    public List<DeviceType> list(@Param("page") Integer page, @Param("rows") Integer rows)
+    public TotalAndList list(@Param("page") Integer page, @Param("rows") Integer rows)
     {
-        List<DeviceType> deviceTypes = deviceTypeService.queryDeviceTypeList(1, 30);
-        return deviceTypes;
+        TotalAndList totalAndList = deviceTypeService.queryDeviceTypeList(page, rows);
+        return totalAndList;
     }
 
     /**
