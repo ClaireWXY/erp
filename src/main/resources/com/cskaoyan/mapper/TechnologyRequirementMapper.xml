@@ -132,4 +132,59 @@
       revise_time = #{reviseTime,jdbcType=TIMESTAMP}
     where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
   </update>
+
+  <resultMap id="requirementMap" type="com.cskaoyan.bean.TechnologyRequirement">
+    <id column="technology_requirement_id" jdbcType="VARCHAR" property="technologyRequirementId" />
+    <result column="technology_id" jdbcType="VARCHAR" property="technologyId"/>
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="revise_time" jdbcType="TIMESTAMP" property="reviseTime" />
+    <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+  </resultMap>
+
+    <select id="count" resultType="_int">
+     select count(*) from technology_requirement
+    </select>
+
+  <select id="queryAllTechnologyRequirement" resultMap="requirementMap">
+   select *
+   from technology_requirement tr inner join technology t
+   on tr.technology_id = t.technology_id
+   limit #{rows} offset #{offset}
+  </select>
+
+  <select id="searchTechnologyRequirementByTechnologyRequirementId" resultMap="requirementMap">
+        select *
+        from technology_requirement tr inner join technology t
+        on tr.technology_id = t.technology_id
+        where technology_requirement_id = #{technologyRequirementId}
+        limit #{rows} offset #{offset}
+    </select>
+
+  <select id="countByTechnologyName" resultType="_int">
+    select count(*)
+    from technology_requirement tr inner join technology t
+    on tr.technology_id = t.technology_id
+    where technology_name = #{technologyName}
+  </select>
+
+  <select id="searchTechnologyRequirementByTechnologyName" resultMap="requirementMap">
+        select *
+        from technology_requirement tr inner join technology t
+        on tr.technology_id = t.technology_id
+        where technology_name = #{technologyName}
+        limit #{rows} offset #{offset}
+  </select>
+
+  <delete id="deleteBatchTechnologyRequirementByIds">
+    delete from technology_requirement where technology_requirement_id in (
+    <foreach collection="array" item="id" separator=",">
+      #{id}
+    </foreach>)
+  </delete>
+
+  <insert id="insertTechnologyRequirement" >
+
+  </insert>
+
 </mapper>

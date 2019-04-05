@@ -1,19 +1,28 @@
 package com.cskaoyan.bean;
 
+import java.util.Date;
+
 public class TechnologyPlan {
-    String	technologyPlanId;
-    String	technologyId;
-    int		batchAmount;
-    String	startPlan;
-    String	endPlan;
-    String	commitPlan;
-    String	technologyPlanStart;
-    String	technologyPlanEnd;
+    private String technologyPlanId;
+
+    private String technologyId;
+
+    private Integer batchAmount;
+
+    private Date startPlan;
+
+    private Date endPlan;
+
+    private Date commitPlan;
+
+    private Date technologyPlanStart;
+
+    private Date technologyPlanEnd;
 
     public TechnologyPlan() {
     }
 
-    public TechnologyPlan(String technologyPlanId, String technologyId, int batchAmount, String startPlan, String endPlan, String commitPlan, String technologyPlanStart, String technologyPlanEnd) {
+    public TechnologyPlan(String technologyPlanId, String technologyId, Integer batchAmount, Date startPlan, Date endPlan, Date commitPlan, Date technologyPlanStart, Date technologyPlanEnd) {
         this.technologyPlanId = technologyPlanId;
         this.technologyId = technologyId;
         this.batchAmount = batchAmount;
@@ -29,7 +38,7 @@ public class TechnologyPlan {
     }
 
     public void setTechnologyPlanId(String technologyPlanId) {
-        this.technologyPlanId = technologyPlanId;
+        this.technologyPlanId = technologyPlanId == null ? null : technologyPlanId.trim();
     }
 
     public String getTechnologyId() {
@@ -37,68 +46,68 @@ public class TechnologyPlan {
     }
 
     public void setTechnologyId(String technologyId) {
-        this.technologyId = technologyId;
+        this.technologyId = technologyId == null ? null : technologyId.trim();
     }
 
-    public int getBatchAmount() {
+    public Integer getBatchAmount() {
         return batchAmount;
     }
 
-    public void setBatchAmount(int batchAmount) {
+    public void setBatchAmount(Integer batchAmount) {
         this.batchAmount = batchAmount;
     }
 
-    public String getStartPlan() {
+    public Date getStartPlan() {
         return startPlan;
     }
 
-    public void setStartPlan(String startPlan) {
+    public void setStartPlan(Date startPlan) {
         this.startPlan = startPlan;
     }
 
-    public String getEndPlan() {
+    public Date getEndPlan() {
         return endPlan;
     }
 
-    public void setEndPlan(String endPlan) {
+    public void setEndPlan(Date endPlan) {
         this.endPlan = endPlan;
     }
 
-    public String getCommitPlan() {
+    public Date getCommitPlan() {
         return commitPlan;
     }
 
-    public void setCommitPlan(String commitPlan) {
+    public void setCommitPlan(Date commitPlan) {
         this.commitPlan = commitPlan;
     }
 
-    public String getTechnologyPlanStart() {
+    public Date getTechnologyPlanStart() {
         return technologyPlanStart;
     }
 
-    public void setTechnologyPlanStart(String technologyPlanStart) {
+    public void setTechnologyPlanStart(Date technologyPlanStart) {
         this.technologyPlanStart = technologyPlanStart;
     }
 
-    public String getTechnologyPlanEnd() {
+    public Date getTechnologyPlanEnd() {
         return technologyPlanEnd;
     }
 
-    public void setTechnologyPlanEnd(String technologyPlanEnd) {
+    public void setTechnologyPlanEnd(Date technologyPlanEnd) {
         this.technologyPlanEnd = technologyPlanEnd;
     }
 
     @Override
     public String toString() {
-        return "bean.TechnologyPlan{" +
+        return "TechnologyPlan{" +
                 "technologyPlanId='" + technologyPlanId + '\'' +
                 ", technologyId='" + technologyId + '\'' +
                 ", batchAmount=" + batchAmount +
-                ", startPlan='" + startPlan + '\'' +
-                ", endPlan='" + endPlan + '\'' +
-                ", commitPlan='" + commitPlan + '\'' +
-                ", technologyPlanStart='" + technologyPlanStart + '\'' +
-                ", technologyPlanEnd='" + technologyPlanEnd + '\'' +
+                ", startPlan=" + startPlan +
+                ", endPlan=" + endPlan +
+                ", commitPlan=" + commitPlan +
+                ", technologyPlanStart=" + technologyPlanStart +
+                ", technologyPlanEnd=" + technologyPlanEnd +
                 '}';
     }
 }

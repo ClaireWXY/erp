@@ -200,4 +200,10 @@
         #{id}
         </foreach>)
     </delete>
+
+  <select id="findAllTechnology" resultMap="BaseResultMap">
+    select * from technology
+  </select>
+
+
 </mapper>

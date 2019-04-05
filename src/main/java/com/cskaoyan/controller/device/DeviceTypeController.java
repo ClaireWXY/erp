@@ -22,15 +22,25 @@ public class DeviceTypeController
     @Autowired
     private DeviceTypeService deviceTypeService;
 
-    @RequestMapping("device/deviceType")
-    public String DeviceCheckForm(@Param("page") Integer page, @Param("rows") Integer rows)
-    {
-        return "deviceType";
+    @RequestMapping("*/*_judge")
+    @ResponseBody
+    public String judge() {
+        return "";
     }
 
     /**
      * 查询所有设备种类
+     * @param page
+     * @param rows
+     * @return
      */
+    @RequestMapping("device/deviceType")
+    public String DeviceCheckForm(@Param("page") Integer page, @Param("rows") Integer rows)
+    {
+
+        return "deviceType";
+    }
+
     @RequestMapping("deviceType/list")
     @ResponseBody
     public List<DeviceType> list(@Param("page") Integer page, @Param("rows") Integer rows)
@@ -41,7 +51,6 @@ public class DeviceTypeController
 
     /**
      * 添加一个设备种类
-     *
      * @param deviceType
      * @return
      */
@@ -51,7 +60,7 @@ public class DeviceTypeController
         return "deviceType_add";
     }
 
-    @RequestMapping("deviceType/add_judge")
+    @RequestMapping("deviceType/insert")
     @ResponseBody
     public Tip addDeviceType(DeviceType deviceType)
     {
@@ -61,5 +70,45 @@ public class DeviceTypeController
             return new Tip("200", "新增设备种类成功!", null);
         }
         return new Tip("0", "添加失败。", null);
+    }
+
+    /**
+     * 编辑一个设备种类
+     * @param deviceType
+     * @return
+     */
+    @RequestMapping("deviceType/edit")
+    public String editDeviceType(@Param("deviceType") DeviceType deviceType)
+    {
+        return "deviceType_edit";
+    }
+
+    @RequestMapping("deviceType/update")
+    @ResponseBody
+    public Tip updateDeviceType(DeviceType deviceType)
+    {
+        boolean update = deviceTypeService.updateByPrimaryKey(deviceType);
+        if (update)
+        {
+            return new Tip("200", "编辑设备种类成功!", null);
+        }
+        return new Tip("0", "添加失败。", null);
+    }
+
+    /**
+     * 删除选中的设备种类
+     * @param ids
+     * @return
+     */
+    @RequestMapping("deviceType/delete_batch")
+    @ResponseBody
+    public Tip deleteDeviceType(@Param("ids") String[] ids)
+    {
+        boolean deleteByPrimaryKey = deviceTypeService.deleteBatchDeviceTypeByIds(ids);
+        if (deleteByPrimaryKey)
+        {
+            return new Tip("200", "删除设备种类成功!", null);
+        }
+        return new Tip("0", "删除失败。", null);
     }
 }
