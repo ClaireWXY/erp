@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 //都是处理custom,所以窄化请求
@@ -60,6 +61,7 @@ public class CustomController {
 
     //前端总是显示undefined
     //组长优化代码:增加Tip类，返回Json数据到前端,正常显示
+    //添加一条数据
     @RequestMapping("insert")
     @ResponseBody
     public Tip insert(Custom custom){
@@ -98,15 +100,15 @@ public class CustomController {
         return new Tip("0","修改失败。",null);
     }
 
-    //根据客户编号查询客户信息
+    //根据客户编号查询客户信息（不显示，有问题，待改善）
     @RequestMapping("search_custom_by_customId")
     @ResponseBody
-    public Custom selectCustomById(String customId){
-        Custom custom = customService.selectCustomById(customId);
-        return custom;
+    public List<Custom> selectCustomById(String customId){
+        List<Custom> customList = customService.selectCustomById(customId);
+        return customList;
     }
 
-    //根据客户的名称查询客户信息
+    //根据客户的名称查询客户信息（不显示，有问题，待改善）
     @RequestMapping("search_custom_by_customName")
     @ResponseBody
     public ArrayList<Custom> selectCustomByName(String customName){

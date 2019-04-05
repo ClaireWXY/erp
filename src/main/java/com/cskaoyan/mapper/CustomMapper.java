@@ -3,6 +3,7 @@ import com.cskaoyan.bean.Custom;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface CustomMapper {
     int deleteByPrimaryKey(String customId);
@@ -11,12 +12,15 @@ public interface CustomMapper {
 
     int insertSelective(Custom custom);
 
-    Custom selectByPrimaryKey(String customId);
+    //根据客户的id,查询客户数据
+    List<Custom> selectByPrimaryKey(String customId);
 
     int updateByPrimaryKeySelective(Custom record);
 
+    //修改客户数据
     int updateByPrimaryKey(Custom record);
 
+    //查询所有的客户
     ArrayList<Custom> selectAllCustom();
 
     int deleteBatchCustomByIds(@Param("ids") String[] ids);

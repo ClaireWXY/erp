@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CustomServiceImpl implements CustomService {
 
@@ -45,9 +47,9 @@ public class CustomServiceImpl implements CustomService {
 
     //根据id搜索
     @Override
-    public Custom selectCustomById(String id) {
-        Custom custom = customMapper.selectByPrimaryKey(id);
-        return custom;
+    public List<Custom> selectCustomById(String id) {
+        List<Custom> customList = customMapper.selectByPrimaryKey(id);
+        return customList;
     }
 
     //根据客户名称搜索

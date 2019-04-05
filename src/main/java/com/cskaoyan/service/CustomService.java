@@ -4,6 +4,7 @@ import com.cskaoyan.bean.Custom;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public interface CustomService {
@@ -16,7 +17,7 @@ public interface CustomService {
 
     boolean updateCustomById(Custom custom);
 
-    Custom selectCustomById(String id);
+    List<Custom> selectCustomById(String id);
 
     //根据客户名称查询客户数据
     ArrayList<Custom> selectCustomByName(String customName);

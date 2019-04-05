@@ -64,7 +64,7 @@
 
 
 
-  <!--自己添加：根据ids，删除多条数据-->
+  <!--自己添加：根据ids，删除多条数据，循环遍历-->
   <delete id="deleteBatchCustomByIds">
     delete from custom where custom_id in
     <foreach collection="ids" item="id" separator="," open="(" close=")">

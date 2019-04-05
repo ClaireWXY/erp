@@ -75,4 +75,65 @@
       </if>
     </trim>
   </insert>
+
+
+  <!--sql片段-->
+  <sql id="Base_Column_List" >
+    product_id,product_name,product_type,image,note,status
+  </sql>
+
+  <!--查询所有的产品-->
+  <select id="selectAllProducts" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+  </select>
+
+  <!--根据产品编号查询，产品编号是唯一-->
+  <select id="selectProductById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+    where product_id = #{id}
+  </select>
+
+  <!--根据产品名称，查询产品-->
+  <select id="queryProductByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+    where product_name = #{name}
+  </select>
+
+  <!--插入一条产品数据-->
+  <insert id="insertProduct" parameterType="com.cskaoyan.bean.Product">
+    insert into product
+    (product_id,product_name,product_type,image,note,status)
+    values
+    (#{productId},#{productName},#{productType},#{image},#{note},#{status})
+  </insert>
+
+
+  <!--删除产品数据-->
+  <delete id="deleteBatchProduct">
+    delete
+    from product
+    where product_id in
+    <foreach collection="ids" separator="," item="id" open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+  <!--修改一条产品信息-->
+  <update id="updateProductById" parameterType="com.cskaoyan.bean.Product">
+    update product
+    set
+    product_id =#{productId},
+    product_name=#{productName},
+    product_name=#{productType},
+    image=#{image},
+    note=#{note},
+    status=#{status}
+    where product_id = #{productId}
+  </update>
 </mapper>
