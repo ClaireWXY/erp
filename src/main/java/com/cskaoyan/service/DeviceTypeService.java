@@ -14,4 +14,9 @@ public interface DeviceTypeService
      * @return
      */
     List<DeviceType> queryDeviceTypeList(Integer page, Integer rows);
+    /**
+     * 添加设备种类
+     * @return
+     */
+    boolean addDeviceType(DeviceType deviceType);
 }
