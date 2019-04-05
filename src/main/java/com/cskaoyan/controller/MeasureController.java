@@ -38,5 +38,17 @@ public class MeasureController {
         TotalAndList totalAndList=measureService.findPageMeasureList((page-1)*rows,rows);
         return totalAndList;
     }
+    @RequestMapping("search_fMeasureCheck_by_fMeasureCheckId")
+    @ResponseBody
+    public TotalAndList searchFMeasureCheckByFMeasureCheckId(String searchValue,int page,int rows){
+        TotalAndList pageMeasureListById = measureService.findPageMeasureListById(searchValue, (page-1)*rows, rows);
+        return pageMeasureListById;
+    }
 
+    @RequestMapping("search_fMeasureCheck_by_orderId")
+    @ResponseBody
+    public TotalAndList searchFMeasureCheckByorderId(String searchValue,int page,int rows){
+        TotalAndList pageMeasureListByOrderId = measureService.findPageMeasureListByOrderId(searchValue, (page-1)*rows, rows);
+        return pageMeasureListByOrderId;
+    }
 }

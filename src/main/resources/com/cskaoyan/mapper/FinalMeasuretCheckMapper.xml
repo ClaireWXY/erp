@@ -189,4 +189,52 @@
         select count(*) from final_measuret_check
     </select>
 
+    <select id="findPageMeasureListById" resultType="com.cskaoyan.bean.PageMasureList">
+        SELECT
+        final_measuret_check.f_measure_check_id as fMeasureCheckId,
+        final_measuret_check.order_id as orderId,
+        final_measuret_check.check_item as checkItem,
+        final_measuret_check.cdate as cdate,
+        final_measuret_check.measure_data as measureData,
+        final_measuret_check.emp_id as empId,
+        final_measuret_check.result as result,
+        final_measuret_check.note as note,
+        employee.emp_name as empName
+        from
+        final_measuret_check,
+        employee
+        where
+        final_measuret_check.emp_id=employee.emp_id
+        and  final_measuret_check.f_measure_check_id like CONCAT('%',#{id},'%')
+        limit #{page} , #{rows}
+  </select>
+
+    <select id="measureCountById" resultType="_int">
+        select count(*) from final_measuret_check  where  final_measuret_check.f_measure_check_id like CONCAT('%',#{id},'%')
+    </select>
+
+    <select id="findPageMeasureListByOrderId" resultType="com.cskaoyan.bean.PageMasureList">
+        SELECT
+        final_measuret_check.f_measure_check_id as fMeasureCheckId,
+        final_measuret_check.order_id as orderId,
+        final_measuret_check.check_item as checkItem,
+        final_measuret_check.cdate as cdate,
+        final_measuret_check.measure_data as measureData,
+        final_measuret_check.emp_id as empId,
+        final_measuret_check.result as result,
+        final_measuret_check.note as note,
+        employee.emp_name as empName
+        from
+        final_measuret_check,
+        employee
+        where
+        final_measuret_check.emp_id=employee.emp_id
+        and   final_measuret_check.order_id like CONCAT('%',#{orderId},'%')
+        limit #{page} , #{rows}
+  </select>
+
+    <select id="measureCountByOrderId" resultType="_int">
+        select count(*) from final_measuret_check  where final_measuret_check.order_id like CONCAT('%',#{orderId},'%')
+    </select>
+
 </mapper>

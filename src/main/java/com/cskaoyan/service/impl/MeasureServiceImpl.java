@@ -25,4 +25,22 @@ public class MeasureServiceImpl implements MeasureService {
 
         return totalAndList;
     }
+
+    @Override
+    public TotalAndList findPageMeasureListById(String searchValue, int page, int rows) {
+        List<PageMasureList> pageMeasureListById = finalMeasuretCheckMapper.findPageMeasureListById(searchValue, page, rows);
+        int i = finalMeasuretCheckMapper.measureCountById(searchValue);
+        TotalAndList totalAndList = new TotalAndList(i,pageMeasureListById);
+        return totalAndList;
+    }
+
+    @Override
+    public TotalAndList findPageMeasureListByOrderId(String searchValue, int page, int rows) {
+        List<PageMasureList> pageMeasureListByOrderId = finalMeasuretCheckMapper.findPageMeasureListByOrderId(searchValue, page, rows);
+        int i = finalMeasuretCheckMapper.measureCountByOrderId(searchValue);
+        TotalAndList totalAndList = new TotalAndList(i,pageMeasureListByOrderId);
+        return totalAndList;
+    }
+
+
 }
