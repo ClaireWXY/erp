@@ -18,6 +18,8 @@ public interface TechnologyMapper {
 
     int updateByPrimaryKey(Technology record);
 
+    List<Technology> findAllTechnology();
+
     List<Technology> queryAllTechnology(@Param("offset") Integer offset,@Param("rows") Integer rows);
 
     List<Technology> searchTechnologyByTechnologyId(@Param("technologyId") String technologyId,@Param("offset") Integer offset,@Param("rows") Integer rows);
