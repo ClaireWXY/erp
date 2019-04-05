@@ -18,5 +18,10 @@ public interface CustomService {
 
     Custom selectCustomById(String id);
 
+    //根据客户名称查询客户数据
     ArrayList<Custom> selectCustomByName(String customName);
+
+
+
+
 }
