@@ -54,7 +54,7 @@
 
   <select id="selectPageMaterialReceive" resultMap="MaterialReceiveMap">
     select
-    mr.receive_id,m.material_id,
+    mr.receive_id,
     m.material_id,m.material_type,m.status,m.remaining,m.note,
     mr.amount,mr.receive_date,mr.sender,mr.receiver,mr.note
     from material_receive mr left join material m on mr.material_id = m.material_id
@@ -238,4 +238,8 @@
       note = #{note,jdbcType=VARCHAR}
     where receive_id = #{receiveId,jdbcType=VARCHAR}
   </update>
+
+    <update id="updateMaterialReceiveNoteById">
+        update material_receive set note = #{note} where receive_id = #{receiveId}
+    </update>
 </mapper>

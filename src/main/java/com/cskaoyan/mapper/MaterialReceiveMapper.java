@@ -3,6 +3,7 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.MaterialReceive;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface MaterialReceiveMapper {
     List<MaterialReceive> selectPageMaterialReceiveByReceiveId(@Param("receiveId") String receiveId, @Param("limit")int limit, @Param("offset")int offset);
 
     List<MaterialReceive> selectPageMaterialReceiveByMaterialId(@Param("materialId")String materialId, @Param("limit")int limit,  @Param("offset")int offset);
+
+    int updateMaterialReceiveNoteById(@Param("receiveId") String receiveId, @Param("note") String note);
 }

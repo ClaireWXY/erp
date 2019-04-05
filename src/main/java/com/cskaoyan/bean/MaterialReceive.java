@@ -2,13 +2,21 @@ package com.cskaoyan.bean;
 
 public class MaterialReceive {
     String	receiveId;
+    Material material;
     String	materialId;
     int		amount;
     String	receiveDate;
     String	sender;
     String	receiver;
     String	note;
-    Material material;
+
+    public String getMaterialId() {
+        return materialId;
+    }
+
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
+    }
 
     public Material getMaterial() {
         return material;
@@ -21,15 +29,18 @@ public class MaterialReceive {
     public MaterialReceive() {
     }
 
-    public MaterialReceive(String receiveId, String materialId, int amount, String receiveDate, String sender, String receiver, String note, Material material) {
-        this.receiveId = receiveId;
-        this.materialId = materialId;
-        this.amount = amount;
-        this.receiveDate = receiveDate;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.note = note;
-        this.material = material;
+    @Override
+    public String toString() {
+        return "MaterialReceive{" +
+                "receiveId='" + receiveId + '\'' +
+                ", material=" + material +
+                ", materialId='" + materialId + '\'' +
+                ", amount=" + amount +
+                ", receiveDate='" + receiveDate + '\'' +
+                ", sender='" + sender + '\'' +
+                ", receiver='" + receiver + '\'' +
+                ", note='" + note + '\'' +
+                '}';
     }
 
     public String getReceiveId() {
@@ -40,13 +51,6 @@ public class MaterialReceive {
         this.receiveId = receiveId;
     }
 
-    public String getMaterialId() {
-        return materialId;
-    }
-
-    public void setMaterialId(String materialId) {
-        this.materialId = materialId;
-    }
 
     public int getAmount() {
         return amount;
@@ -88,17 +92,4 @@ public class MaterialReceive {
         this.note = note;
     }
 
-    @Override
-    public String toString() {
-        return "MaterialReceive{" +
-                "receiveId='" + receiveId + '\'' +
-                ", materialId='" + materialId + '\'' +
-                ", amount=" + amount +
-                ", receiveDate='" + receiveDate + '\'' +
-                ", sender='" + sender + '\'' +
-                ", receiver='" + receiver + '\'' +
-                ", note='" + note + '\'' +
-                ", material=" + material +
-                '}';
-    }
 }

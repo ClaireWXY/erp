@@ -19,4 +19,10 @@ public class WorkServiceImpl implements WorkService {
         List<Work> workList = workMapper.selectAllWork();
         return workList;
     }
+
+    @Override
+    public Work getWorkById(String workId) {
+        Work work = workMapper.selectByPrimaryKey(workId);
+        return work;
+    }
 }

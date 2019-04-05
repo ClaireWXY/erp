@@ -1,7 +1,6 @@
 package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.Technology;
-import com.cskaoyan.bean.TechnologyRequirement;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,8 +18,6 @@ public interface TechnologyMapper {
 
     int updateByPrimaryKey(Technology record);
 
-    List<Technology> findAllTechnology();
-
     List<Technology> queryAllTechnology(@Param("offset") Integer offset,@Param("rows") Integer rows);
 
     List<Technology> searchTechnologyByTechnologyId(@Param("technologyId") String technologyId,@Param("offset") Integer offset,@Param("rows") Integer rows);
@@ -28,6 +25,7 @@ public interface TechnologyMapper {
     List<Technology> searchTeachnologyByTechnologyName(@Param("technologyName") String technologyName,@Param("offset") Integer offset,@Param("rows") Integer rows);
 
     int deleteBatchTechnologyByIds(String[] ids);
+
 
 
 }

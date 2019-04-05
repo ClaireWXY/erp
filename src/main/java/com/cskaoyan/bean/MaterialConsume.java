@@ -9,11 +9,29 @@ public class MaterialConsume {
     String	sender;
     String	receiver;
     String	note;
+    Material material;
+    Work work;
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public Work getWork() {
+        return work;
+    }
+
+    public void setWork(Work work) {
+        this.work = work;
+    }
 
     public MaterialConsume() {
     }
 
-    public MaterialConsume(String consumeId, String workId, String materialId, int consumeAmount, String consumeDate, String sender, String receiver, String note) {
+    public MaterialConsume(String consumeId, String workId, String materialId, int consumeAmount, String consumeDate, String sender, String receiver, String note, Material material, Work work) {
         this.consumeId = consumeId;
         this.workId = workId;
         this.materialId = materialId;
@@ -22,6 +40,8 @@ public class MaterialConsume {
         this.sender = sender;
         this.receiver = receiver;
         this.note = note;
+        this.material = material;
+        this.work = work;
     }
 
     public String getConsumeId() {
@@ -90,7 +110,7 @@ public class MaterialConsume {
 
     @Override
     public String toString() {
-        return "bean.MaterialConsume{" +
+        return "MaterialConsume{" +
                 "consumeId='" + consumeId + '\'' +
                 ", workId='" + workId + '\'' +
                 ", materialId='" + materialId + '\'' +
@@ -99,6 +119,8 @@ public class MaterialConsume {
                 ", sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
                 ", note='" + note + '\'' +
+                ", material=" + material +
+                ", work=" + work +
                 '}';
     }
 }
