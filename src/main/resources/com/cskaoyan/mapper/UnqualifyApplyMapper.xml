@@ -240,6 +240,8 @@
 
   </select>
   <select id="UnqualifyCountByProductName" resultType="_int">
-    select count(*) from unqualify_apply where product_name like CONCAT('%',#{productName},'%')
+    select count(unqualify_apply.unqualify_apply_id) from unqualify_apply,product where
+    unqualify_apply.product_id=product.product_id   and
+    product.product_name like CONCAT('%',#{productName},'%')
   </select>
 </mapper>
