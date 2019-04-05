@@ -1,5 +1,7 @@
 package com.cskaoyan.bean;
 
+import com.sun.javafx.beans.IDProperty;
+
 public class DeviceType {
     String	deviceTypeId;
     String	deviceTypeName;
