@@ -22,4 +22,21 @@ public class FCountCheckServiceImpl implements FCountCheckService {
         TotalAndList totalAndList = new TotalAndList(i,pageFinalCountList);
         return totalAndList;
     }
+
+    @Override
+    public TotalAndList findfCountCheckById(String searchValue, int page, int rows) {
+        List<PageFinalCountList> pageFinalCountListById = finalCountCheckMapper.findPageFinalCountListById(searchValue, page, rows);
+        int i = finalCountCheckMapper.finalCountCheckCountById(searchValue);
+        TotalAndList totalAndList = new TotalAndList(i, pageFinalCountListById);
+        return totalAndList;
+    }
+
+    @Override
+    public TotalAndList findfCountCheckByOrderId(String searchValue, int page, int rows) {
+        List<PageFinalCountList> pageFinalCountListByOrderId = finalCountCheckMapper.findPageFinalCountListByOrderId(searchValue, page, rows);
+        int i = finalCountCheckMapper.finalCountCheckCountByOrderId(searchValue);
+        TotalAndList totalAndList = new TotalAndList(i, pageFinalCountListByOrderId);
+        return totalAndList;
+    }
+
 }

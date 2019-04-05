@@ -36,5 +36,18 @@ public class FCountCheckController {
         TotalAndList pageFinalCountList = fCountCheckService.findPageFinalCountList((page - 1) * rows, rows);
         return pageFinalCountList;
     }
+    @RequestMapping("search_fCountCheck_by_fCountCheckId")
+    @ResponseBody
+    public TotalAndList searchFCountCheckByFCountCheckId(String searchValue,int page,int rows){
+        TotalAndList pageMeasureListById = fCountCheckService.findfCountCheckById(searchValue, (page-1)*rows, rows);
+        return pageMeasureListById;
+    }
+
+    @RequestMapping("search_fCountCheck_by_orderId")
+    @ResponseBody
+    public TotalAndList searchFCountCheckByFCountCheckOrderId(String searchValue,int page,int rows){
+        TotalAndList pageMeasureListById = fCountCheckService.findfCountCheckByOrderId(searchValue, (page-1)*rows, rows);
+        return pageMeasureListById;
+    }
 
 }
