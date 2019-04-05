@@ -214,4 +214,31 @@
       note = #{note,jdbcType=VARCHAR}
     where f_count_check_id = #{fCountCheckId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="findPageFinalCountList" resultType="com.cskaoyan.bean.PageFinalCountList">
+    SELECT
+    final_count_check.f_count_check_id as fCountCheckId ,
+    final_count_check.order_id as orderId,
+    final_count_check.check_item as checkItem,
+    final_count_check.sample as sample,
+    final_count_check.check_number as checkNumber,
+    final_count_check.unqualify as unqualify,
+    final_count_check.qualify as qualify,
+    final_count_check.cdate as cdate,
+    final_count_check.measure_data as measureData,
+    final_count_check.emp_id as empId,
+    final_count_check.result as result,
+    final_count_check.note as note,
+    employee.emp_name as empName
+    FROM
+    final_count_check,employee
+    WHERE
+    final_count_check.emp_id=employee.emp_id
+    limit #{page} , #{rows}
+  </select>
+  <select id="finalCountCheckCount" resultType="_int">
+    select count(*) from final_count_check;
+  </select>
+
 </mapper>
