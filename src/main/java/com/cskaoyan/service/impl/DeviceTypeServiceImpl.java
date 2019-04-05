@@ -43,4 +43,28 @@ public class DeviceTypeServiceImpl implements DeviceTypeService
         int insert = deviceTypeMapper.insert(deviceType);
         return insert==1;
     }
+
+    /**
+     * 删除选中的设备种类
+     * @param ids
+     * @return
+     */
+    @Override
+    public boolean deleteBatchDeviceTypeByIds(String[] ids)
+    {
+        int i = deviceTypeMapper.deleteBatchDeviceTypeByIds(ids);
+        return i>=1;
+    }
+
+    /**
+     * 根据id编辑选中的设备种类
+     * @param record
+     * @return
+     */
+    @Override
+    public boolean updateByPrimaryKey(DeviceType record)
+    {
+        int i = deviceTypeMapper.updateByPrimaryKey(record);
+        return i==1;
+    }
 }

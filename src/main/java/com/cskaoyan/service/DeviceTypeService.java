@@ -19,4 +19,18 @@ public interface DeviceTypeService
      * @return
      */
     boolean addDeviceType(DeviceType deviceType);
+
+    /**
+     * 根据id删除选中的设备种类
+     * @param ids
+     * @return
+     */
+    boolean deleteBatchDeviceTypeByIds(String[] ids);
+
+    /**
+     * 根据id编辑选中的设备种类
+     * @param record
+     * @return
+     */
+    boolean updateByPrimaryKey(DeviceType record);
 }
