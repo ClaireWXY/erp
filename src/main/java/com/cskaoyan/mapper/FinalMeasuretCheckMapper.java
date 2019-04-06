@@ -29,4 +29,6 @@ public interface FinalMeasuretCheckMapper {
 
     List<PageMasureList> findPageMeasureListByOrderId(@Param("orderId") String searchValue, @Param("page") int page, @Param("rows")int rows);
     int measureCountByOrderId(@Param("orderId") String searchValue);
+
+    int deleteFinalMeasuretCheckByIds(@Param("array") String[] ids);
 }

@@ -1,5 +1,6 @@
 package com.cskaoyan.service.impl;
 
+import com.cskaoyan.bean.FinalMeasuretCheck;
 import com.cskaoyan.bean.PageMasureList;
 import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.mapper.FinalMeasuretCheckMapper;
@@ -40,6 +41,24 @@ public class MeasureServiceImpl implements MeasureService {
         int i = finalMeasuretCheckMapper.measureCountByOrderId(searchValue);
         TotalAndList totalAndList = new TotalAndList(i,pageMeasureListByOrderId);
         return totalAndList;
+    }
+
+    @Override
+    public boolean insertFinalMeasuretCheck(FinalMeasuretCheck finalMeasuretCheck) {
+        int insert = finalMeasuretCheckMapper.insert(finalMeasuretCheck);
+        return insert==1 ;
+    }
+
+    @Override
+    public boolean updateFinalMeasuretCheck(FinalMeasuretCheck finalMeasuretCheck) {
+        int i = finalMeasuretCheckMapper.updateByPrimaryKey(finalMeasuretCheck);
+        return i==1;
+    }
+
+    @Override
+    public boolean deleteFinalMeasuretCheck(String[] ids) {
+        int i = finalMeasuretCheckMapper.deleteFinalMeasuretCheckByIds(ids);
+        return i!=0;
     }
 
 

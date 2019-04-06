@@ -1,7 +1,10 @@
 package com.cskaoyan.controller;
 
 
+import com.cskaoyan.bean.FinalMeasuretCheck;
+import com.cskaoyan.bean.Tip;
 import com.cskaoyan.bean.TotalAndList;
+import com.cskaoyan.mapper.FinalMeasuretCheckMapper;
 import com.cskaoyan.service.MeasureService;
 import com.cskaoyan.service.impl.MeasureServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +54,48 @@ public class MeasureController {
         TotalAndList pageMeasureListByOrderId = measureService.findPageMeasureListByOrderId(searchValue, (page-1)*rows, rows);
         return pageMeasureListByOrderId;
     }
+
+    @RequestMapping("add")
+    public String add(){
+        return "measurement_add";
+    }
+
+    @RequestMapping("edit")
+    public String edit(){
+        return "measurement_edit";
+    }
+
+    @RequestMapping("insert")
+    @ResponseBody
+    public Tip insert(FinalMeasuretCheck finalMeasuretCheck){
+        boolean b = measureService.insertFinalMeasuretCheck(finalMeasuretCheck);
+
+        if (b){
+            return new Tip("200","添加成功!",null);
+        }
+        return new Tip("0","添加失败。",null);
+    }
+
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Tip updateAll(FinalMeasuretCheck finalMeasuretCheck){
+        boolean b = measureService.updateFinalMeasuretCheck(finalMeasuretCheck);
+        if (b){
+            return new Tip("200","修改成功!",null);
+        }
+        return new Tip("0","修改失败。",null);
+    }
+
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Tip deleteBatch(String[] ids){
+        boolean b = measureService.deleteFinalMeasuretCheck(ids);
+        System.out.println(b);
+        if (b){
+            return new Tip("200","修改成功!",null);
+        }
+        return new Tip("0","修改失败。",null);
+    }
+
+
 }
