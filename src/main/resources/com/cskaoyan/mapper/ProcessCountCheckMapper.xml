@@ -270,5 +270,13 @@
         where p_count_check_id like CONCAT('%',#{id},'%')
     </select>
 
+    <delete id="deleteProcessCountCheckByIds">
+        delete from process_count_check where p_count_check_id in (
+        <foreach collection="array" item="id" separator=",">
+            #{id}
+        </foreach>)
+    </delete>
+
+
 
 </mapper>

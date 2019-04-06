@@ -25,4 +25,6 @@ public interface ProcessCountCheckMapper {
 
     List<PagePCountCheckList> findCountCheckListById(@Param("id")String searchValue,@Param("page")int page, @Param("rows")int rows);
     int PCountCheckCountById(@Param("id")String searchValue);
+
+    int deleteProcessCountCheckByIds(@Param("array") String[] ids);
 }
