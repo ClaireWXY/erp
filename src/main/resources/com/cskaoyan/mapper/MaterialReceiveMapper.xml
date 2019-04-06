@@ -239,7 +239,10 @@
     where receive_id = #{receiveId,jdbcType=VARCHAR}
   </update>
 
-    <update id="updateMaterialReceiveNoteById">
-        update material_receive set note = #{note} where receive_id = #{receiveId}
-    </update>
+  <update id="updateMaterialReceiveNoteById" parameterType="com.cskaoyan.bean.MaterialReceive">
+      update material_receive
+      set
+      note = #{materialReceive.note,jdbcType=VARCHAR}
+      where receive_id = #{materialReceive.receiveId,jdbcType=VARCHAR}
+  </update>
 </mapper>

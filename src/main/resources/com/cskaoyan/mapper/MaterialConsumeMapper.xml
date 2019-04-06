@@ -213,7 +213,7 @@
   <update id="updateMaterialConsumeNoteById" parameterType="com.cskaoyan.bean.MaterialConsume">
       update material_consume
       set
-      note = #{note,jdbcType=VARCHAR}
-      where consume_id = #{consumeId,jdbcType=VARCHAR}
+      note = #{materialConsume.note,jdbcType=VARCHAR}
+      where consume_id = #{materialConsume.consumeId,jdbcType=VARCHAR}
   </update>
 </mapper>

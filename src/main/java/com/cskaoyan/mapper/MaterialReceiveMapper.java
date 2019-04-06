@@ -26,5 +26,5 @@ public interface MaterialReceiveMapper {
 
     List<MaterialReceive> selectPageMaterialReceiveByMaterialId(@Param("materialId")String materialId, @Param("limit")int limit,  @Param("offset")int offset);
 
-    int updateMaterialReceiveNoteById(@Param("receiveId") String receiveId, @Param("note") String note);
+    int updateMaterialReceiveNoteById(@Param("materialReceive")MaterialReceive materialReceive);
 }
