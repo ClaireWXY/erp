@@ -31,4 +31,6 @@ public interface UnqualifyApplyMapper {
     List<PageUnQualifyList> findPageUnQualifyListByProductName(@Param("productName") String searchValue,@Param("page") int page , @Param("rows") int rows);
 
     int UnqualifyCountByProductName(@Param("productName") String searchValue);
+
+    int deleteunqualifyApplyByids(@Param("array") String[] ids);
 }

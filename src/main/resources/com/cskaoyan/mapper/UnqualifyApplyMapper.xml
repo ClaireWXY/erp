@@ -244,4 +244,10 @@
     unqualify_apply.product_id=product.product_id   and
     product.product_name like CONCAT('%',#{productName},'%')
   </select>
+    <delete id="deleteunqualifyApplyByids">
+        delete from unqualify_apply where unqualify_apply_id in (
+        <foreach collection="array" item="id" separator=",">
+            #{id}
+        </foreach>)
+    </delete>
 </mapper>
