@@ -58,4 +58,17 @@ public class TechnologyPlanServiceImpl implements TechnologyPlanService {
         int i = technologyPlanMapper.deleteBatchTechnologyPlanByIds(ids);
         return i==1;
     }
+
+    @Override
+    public TechnologyPlan queryTechnologyPlanById(String id) {
+        TechnologyPlan technologyPlan = technologyPlanMapper.selectByPrimaryKey(id);
+        return technologyPlan;
+    }
+
+    @Override
+    public List<TechnologyPlan> getData() {
+        List<TechnologyPlan> allTechnologyPlan = technologyPlanMapper.findAllTechnologyPlan();
+        return allTechnologyPlan;
+    }
+
 }

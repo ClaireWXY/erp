@@ -215,8 +215,13 @@
     where technology_plan_id in (
     <foreach collection="array" item="id" separator=",">
       #{id}
-    </foreach>
+  </foreach>
     )
   </delete>
+
+    <select id="findAllTechnologyPlan" resultMap="BaseResultMap">
+        select *
+        from technology_plan;
+    </select>
 
 </mapper>

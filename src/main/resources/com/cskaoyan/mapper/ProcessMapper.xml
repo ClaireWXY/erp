@@ -119,4 +119,45 @@
       quota = #{quota,jdbcType=INTEGER}
     where process_id = #{processId,jdbcType=VARCHAR}
   </update>
+
+    <select id="countProcess" resultType="_int">
+        select count(*) from process
+    </select>
+
+  <select id="queryAllProcess" resultMap="BaseResultMap">
+    select * from process limit #{rows} offset #{offset}
+  </select>
+  
+  <select id="searchProcessByProcessId" resultMap="BaseResultMap">
+     select * from process where process_id =#{processId} limit #{rows} offset #{offset}
+  </select>
+
+  <select id="countByTechnologyPlanId" resultType="_int">
+      select count(*)
+      from process p inner join technology_plan tp
+      on p.technology_plan_id = tp.technology_plan_id
+      where p.technology_plan_id =#{technologyPlanId}
+  </select>
+
+  <select id="searchProcessByTechnologyPlanId" resultMap="BaseResultMap">
+       select *
+       from process p inner join technology_plan tp
+       on p.technology_plan_id = tp.technology_plan_id
+       where p.technology_plan_id = #{technologyPlanId}
+       limit #{rows} offset #{offset}
+  </select>
+
+  <delete id="deleteBatchProcessByIds" >
+       delete from process
+       where process_id in(
+        <foreach collection="array" item="id" separator=",">
+          #{id}
+        </foreach>
+       )
+  </delete>
+
+  <select id="findAllProcess" resultMap="BaseResultMap">
+       select * from process
+  </select>
+
 </mapper>

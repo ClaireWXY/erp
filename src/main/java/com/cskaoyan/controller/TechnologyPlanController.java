@@ -5,6 +5,7 @@ import com.cskaoyan.service.TechnologyPlanService;
 import com.cskaoyan.service.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -103,6 +104,20 @@ public class TechnologyPlanController {
             return new Tip("200","删除工艺计划成功",null);
         }
         return new Tip("0","删除失败",null);
+    }
+
+    @RequestMapping("/get/{technologyPlanId}")
+    @ResponseBody
+    public TechnologyPlan get(@PathVariable("technologyPlanId") String technologyPlanId){
+        TechnologyPlan technologyPlan = technologyPlanService.queryTechnologyPlanById(technologyPlanId);
+        return technologyPlan;
+    }
+
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<TechnologyPlan> getData(){
+        List<TechnologyPlan> data = technologyPlanService.getData();
+        return data;
     }
 
 }

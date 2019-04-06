@@ -31,4 +31,6 @@ public interface TechnologyPlanMapper {
     List<TechnologyPlan> searchTechnologyPlanByTechnologyName(@Param("technologyName") String technologyName,@Param("offset") Integer offset,@Param("rows") Integer rows);
 
     int deleteBatchTechnologyPlanByIds(String[] ids);
+
+    List <TechnologyPlan> findAllTechnologyPlan();
 }

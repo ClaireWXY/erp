@@ -18,9 +18,7 @@ public interface TechnologyPlanService {
     boolean addTechnologyPlan(TechnologyPlan technologyPlan);
     boolean editTechnologyPlan(TechnologyPlan technologyPlan);
     boolean deleteBatchTechnologyPlan(String[] ids);
-
-
-
-
+    TechnologyPlan queryTechnologyPlanById(String id);
+    List<TechnologyPlan> getData();
 
 }
