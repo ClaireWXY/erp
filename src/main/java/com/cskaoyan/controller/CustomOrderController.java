@@ -55,4 +55,12 @@ public class CustomOrderController {
         }
         return new Tip("0","删除失败",null);
     }
+
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<CustomOrder> getData(){
+        List<CustomOrder> orderList = customOrderService.findAllCustomOrder();
+        return orderList;
+    }
+
 }
