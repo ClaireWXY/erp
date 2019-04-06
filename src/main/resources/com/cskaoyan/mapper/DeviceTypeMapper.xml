@@ -170,7 +170,8 @@
   </update>
 
   <select id="queryAllDeviceType" resultMap="BaseResultMap">
-    select * from device_type limit #{rows} offset #{offset}
+    select * from device_type
+    limit #{rows} offset #{offset}
   </select>
 
   <select id="searchDeviceTypeByDeviceTypeId" resultMap="BaseResultMap">
@@ -187,4 +188,13 @@
       #{id}
     </foreach>)
   </delete>
+
+  <select id="queryDeviceTypeByPageAndSelections" resultMap="BaseResultMap">
+        SELECT *
+        FROM device_type
+        ORDER BY device_type_id
+    </select>
+  <select id="deviceTypeCount" resultType="_int">
+    select count(*) from device_type
+  </select>
 </mapper>

@@ -166,4 +166,51 @@
       note = #{note,jdbcType=VARCHAR}
     where p_measure_check_id = #{pMeasureCheckId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findPMeasureCheckList" resultType="com.cskaoyan.bean.PagePMeasureCheckList">
+     SELECT
+    process_measure_check.p_measure_check_id as pMeasureCheckId,
+    process_measure_check.process_id  as processId,
+    process_measure_check.check_item  as checkItem,
+    process_measure_check.cdate as cdate,
+    process_measure_check.measure_data as measureData,
+    process_measure_check.emp_id as empId,
+    process_measure_check.result as result,
+    process_measure_check.note as note,
+    employee.emp_name as empName
+    from
+    process_measure_check,
+    employee
+    where
+    process_measure_check.emp_id=employee.emp_id
+    limit #{page} , #{rows}
+  </select>
+  <select id="PMeasureCheckCount" resultType="_int">
+    select count(*) from  process_measure_check
+  </select>
+
+  <select id="findPMeasureCheckListById" resultType="com.cskaoyan.bean.PagePMeasureCheckList">
+     SELECT
+    process_measure_check.p_measure_check_id as pMeasureCheckId,
+    process_measure_check.process_id  as processId,
+    process_measure_check.check_item  as checkItem,
+    process_measure_check.cdate as cdate,
+    process_measure_check.measure_data as measureData,
+    process_measure_check.emp_id as empId,
+    process_measure_check.result as result,
+    process_measure_check.note as note,
+    employee.emp_name as empName
+    from
+    process_measure_check,
+    employee
+    where
+    process_measure_check.emp_id=employee.emp_id
+    and  process_measure_check.p_measure_check_id like CONCAT('%',#{id},'%')
+    limit #{page} , #{rows}
+  </select>
+  <select id="PMeasureCheckCountById" resultType="_int">
+    select count(*) from  process_measure_check where p_measure_check_id like CONCAT('%',#{id},'%')
+  </select>
+
+
 </mapper>

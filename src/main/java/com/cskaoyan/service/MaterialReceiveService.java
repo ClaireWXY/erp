@@ -20,7 +20,8 @@ public interface MaterialReceiveService {
 
     List<MaterialReceive> selectSearchPageMaterialReceiveByMaterialId(String materialId, int limit, int offset);
 
+    int updateMaterialReceiveNoteById(String receiveId, String note);
 
-    /*    int updateMaterialReceiveNote(String note);*/
+
 
 }
