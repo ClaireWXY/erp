@@ -1,5 +1,8 @@
 package com.cskaoyan.controller;
 
+import com.cskaoyan.bean.FinalCountCheck;
+import com.cskaoyan.bean.ProcessMeasureCheck;
+import com.cskaoyan.bean.Tip;
 import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.service.PMeasureCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +44,45 @@ public class PMeasureCheckController {
         TotalAndList pMeasureCheckListById = pMeasureCheckService.findPMeasureCheckListById(searchValue ,(page - 1) * rows, rows);
         return pMeasureCheckListById;
     }
+    @RequestMapping("add")
+    public String add(){
+        return "p_measure_check_add";
+    }
+
+    @RequestMapping("edit")
+    public String edit(){
+        return "p_measure_check_edit";
+    }
+
+    @RequestMapping("insert")
+    @ResponseBody
+    public Tip insert(ProcessMeasureCheck processMeasureCheck){
+        boolean b = pMeasureCheckService.insertProcessMeasureCheck(processMeasureCheck);
+        if (b){
+            return new Tip("200","添加成功!",null);
+        }
+        return new Tip("0","添加失败。",null);
+    }
+
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Tip updateAll(ProcessMeasureCheck processMeasureCheck){
+        boolean b = pMeasureCheckService.updateProcessMeasureCheck(processMeasureCheck);
+        if (b){
+            return new Tip("200","添加成功!",null);
+        }
+        return new Tip("0","添加失败。",null);
+    }
+
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Tip deleteBatch(String[] ids){
+        boolean b = pMeasureCheckService.deleteProcessMeasureCheckByIds(ids);
+        if (b){
+            return new Tip("200","添加成功!",null);
+        }
+        return new Tip("0","添加失败。",null);
+    }
+
 }
 

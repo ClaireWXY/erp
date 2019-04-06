@@ -212,5 +212,14 @@
     select count(*) from  process_measure_check where p_measure_check_id like CONCAT('%',#{id},'%')
   </select>
 
+  <delete id="deleteProcessMeasureCheckByIds">
+    delete from process_measure_check where p_measure_check_id in (
+    <foreach collection="array" item="id" separator=",">
+      #{id}
+    </foreach>)
+  </delete>
+
+
+
 
 </mapper>

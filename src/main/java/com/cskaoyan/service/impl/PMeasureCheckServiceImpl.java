@@ -30,4 +30,24 @@ public class PMeasureCheckServiceImpl implements PMeasureCheckService {
         TotalAndList totalAndList = new TotalAndList(i, pMeasureCheckListById);
         return totalAndList;
     }
+
+    @Override
+    public boolean insertProcessMeasureCheck(ProcessMeasureCheck processMeasureCheck) {
+        int insert = processMeasureCheckMapper.insert(processMeasureCheck);
+        return insert==1;
+    }
+
+    @Override
+    public boolean updateProcessMeasureCheck(ProcessMeasureCheck processMeasureCheck) {
+        int i = processMeasureCheckMapper.updateByPrimaryKey(processMeasureCheck);
+        return i==1;
+    }
+
+    @Override
+    public boolean deleteProcessMeasureCheckByIds(String[] ids) {
+        int i = processMeasureCheckMapper.deleteProcessMeasureCheckByIds(ids);
+        return i!=0;
+    }
+
+
 }

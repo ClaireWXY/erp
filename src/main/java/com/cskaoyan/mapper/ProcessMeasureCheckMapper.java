@@ -30,4 +30,6 @@ public interface ProcessMeasureCheckMapper {
     int PMeasureCheckCountById(@Param("id")String search);
 
 
+    int deleteProcessMeasureCheckByIds(@Param("array") String[] ids);
+
 }
