@@ -3,7 +3,6 @@ package com.cskaoyan.controller;
 import com.cskaoyan.bean.Custom;
 import com.cskaoyan.bean.Tip;
 import com.cskaoyan.service.CustomService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -113,6 +112,13 @@ public class CustomController {
     @ResponseBody
     public ArrayList<Custom> selectCustomByName(String customName){
         ArrayList<Custom> customList= customService.selectCustomByName(customName);
+        return customList;
+    }
+
+    @RequestMapping("get_data")
+    @ResponseBody
+    public ArrayList<Custom> getDate(){
+        ArrayList<Custom> customList = customService.selectAllCustom();
         return customList;
     }
 }
