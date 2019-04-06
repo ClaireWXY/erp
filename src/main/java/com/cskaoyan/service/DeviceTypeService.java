@@ -19,6 +19,9 @@ public interface DeviceTypeService
      */
     TotalAndList queryDeviceTypeList(Integer page, Integer rows);
 
+    //获取所有设备种类数据
+    List<DeviceType> queryDeviceType_data();;
+
     /**
      * 添加设备种类
      *
@@ -59,6 +62,14 @@ public interface DeviceTypeService
      */
     List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("searchValue") String searchValue, @Param("page") Integer page, @Param("rows") Integer rows);
 
+    /**
+     * 根据设备名称搜索设备种类
+     *
+     * @param searchValue
+     * @param page
+     * @param rows
+     * @return
+     */
     List<DeviceType> searchDeviceTypeByDeviceTypeName(@Param("searchValue") String searchValue,@Param("page") Integer page,@Param("rows") Integer rows);
 
 }

@@ -168,10 +168,14 @@
       device_type_warranty = #{deviceTypeWarranty,jdbcType=TIMESTAMP}
     where device_type_id = #{deviceTypeId,jdbcType=VARCHAR}
   </update>
-
+<!--分页查询-->
   <select id="queryAllDeviceType" resultMap="BaseResultMap">
     select * from device_type
     limit #{rows} offset #{offset}
+  </select>
+
+  <select id="queryDeviceType_data" resultMap="BaseResultMap">
+    select * from device_type
   </select>
 
   <select id="searchDeviceTypeByDeviceTypeId" resultMap="BaseResultMap">

@@ -26,7 +26,7 @@ public interface DeviceTypeMapper {
 
     int deleteBatchDeviceTypeByIds(String[] ids);
 
-    List<DeviceType> queryDeviceTypeByPageAndSelections();
+    List<DeviceType> queryDeviceType_data();
 
     int deviceTypeCount();
 

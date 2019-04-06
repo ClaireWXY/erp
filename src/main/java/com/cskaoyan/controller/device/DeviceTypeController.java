@@ -29,6 +29,16 @@ public class DeviceTypeController
         return "";
     }
 
+    @RequestMapping("deviceType/get_data")
+    @ResponseBody
+    public List<DeviceType> get_data()
+    {
+        List<DeviceType> deviceTypes = deviceTypeService.queryDeviceType_data();
+
+        return deviceTypes;
+    }
+
+
     /**
      * 分页查询所有设备种类
      * @param page

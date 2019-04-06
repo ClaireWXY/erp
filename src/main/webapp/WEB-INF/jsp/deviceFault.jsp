@@ -48,19 +48,19 @@
         </c:if>
     </c:forEach>--%>
     <div style="float: left;">
-        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="deviceType_add()">
+        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="deviceFault_add()">
             新增
         </a>
     </div>
 
     <div style="float: left;">
-        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="deviceType_edit()">
+        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="deviceFault_edit()">
             编辑
         </a>
     </div>
 
     <div style="float: left;">
-        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="deviceType_delete()">
+        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="deviceFault_delete()">
             删除
         </a>
     </div>
