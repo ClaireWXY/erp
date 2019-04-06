@@ -108,4 +108,8 @@
       note = #{note,jdbcType=VARCHAR}
     where department_id = #{departmentId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findAllDepartment" resultMap="BaseResultMap">
+    select * from department
+  </select>
 </mapper>

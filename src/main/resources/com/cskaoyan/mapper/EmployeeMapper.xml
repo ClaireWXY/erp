@@ -225,4 +225,9 @@
       department_id = #{departmentId,jdbcType=VARCHAR}
     where emp_id = #{empId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findAllEmployee" resultMap="BaseResultMap">
+    SELECT * FROM employee
+  </select>
+
 </mapper>
