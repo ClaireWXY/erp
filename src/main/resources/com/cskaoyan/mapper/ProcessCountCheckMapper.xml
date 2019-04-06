@@ -215,5 +215,60 @@
         where p_count_check_id = #{pCountCheckId,jdbcType=VARCHAR}
     </update>
 
+    <select id="findCountCheckList" resultType="com.cskaoyan.bean.PagePCountCheckList">
+        select
+        process_count_check.p_count_check_id as pCountCheckId,
+        process_count_check.process_id as processId,
+        process_count_check.check_item as checkItem,
+        process_count_check.sample as sample,
+        process_count_check.check_number as checkNumber,
+        process_count_check.unqualify as unqualify,
+        process_count_check.qualify as qualify,
+        process_count_check.cdate as cdate,
+        process_count_check.measure_data as measureData,
+        process_count_check.emp_id as empId,
+        process_count_check.result as result,
+        process_count_check.note as note,
+        employee.emp_name as empName
+        from
+        process_count_check,
+        employee
+        where
+        process_count_check.emp_id=employee.emp_id
+        limit #{page} , #{rows}
+    </select>
+    <select id="PCountCheckCount" resultType="_int">
+        select count(*) from process_count_check
+    </select>
+
+    <select id="findCountCheckListById" resultType="com.cskaoyan.bean.PagePCountCheckList">
+        select
+        process_count_check.p_count_check_id as pCountCheckId,
+        process_count_check.process_id as processId,
+        process_count_check.check_item as checkItem,
+        process_count_check.sample as sample,
+        process_count_check.check_number as checkNumber,
+        process_count_check.unqualify as unqualify,
+        process_count_check.qualify as qualify,
+        process_count_check.cdate as cdate,
+        process_count_check.measure_data as measureData,
+        process_count_check.emp_id as empId,
+        process_count_check.result as result,
+        process_count_check.note as note,
+        employee.emp_name as empName
+        from
+        process_count_check,
+        employee
+        where
+        process_count_check.emp_id=employee.emp_id
+        and   process_count_check.p_count_check_id  like CONCAT('%',#{id},'%')
+        limit #{page} , #{rows}
+
+    </select>
+    <select id="PCountCheckCountById" resultType="_int">
+        select count(*) from process_count_check
+        where p_count_check_id like CONCAT('%',#{id},'%')
+    </select>
+
 
 </mapper>
