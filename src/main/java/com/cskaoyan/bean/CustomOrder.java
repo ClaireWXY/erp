@@ -13,11 +13,13 @@ public class CustomOrder {
     String	image;
     String	file;
     int		status;
+    Custom custom;
+    Product product;
 
     public CustomOrder() {
     }
 
-    public CustomOrder(String orderId, String customId, String productId, String orderDate, String requestDate, String note, int quantity, double unitPrice, String unit, String image, String file, int status) {
+    public CustomOrder(String orderId, String customId, String productId, String orderDate, String requestDate, String note, int quantity, double unitPrice, String unit, String image, String file, int status, Custom custom, Product product) {
         this.orderId = orderId;
         this.customId = customId;
         this.productId = productId;
@@ -30,6 +32,24 @@ public class CustomOrder {
         this.image = image;
         this.file = file;
         this.status = status;
+        this.custom = custom;
+        this.product = product;
+    }
+
+    public Custom getCustom() {
+        return custom;
+    }
+
+    public void setCustom(Custom custom) {
+        this.custom = custom;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public String getOrderId() {
@@ -130,7 +150,7 @@ public class CustomOrder {
 
     @Override
     public String toString() {
-        return "bean.CustomOrder{" +
+        return "CustomOrder{" +
                 "orderId='" + orderId + '\'' +
                 ", customId='" + customId + '\'' +
                 ", productId='" + productId + '\'' +
@@ -143,6 +163,8 @@ public class CustomOrder {
                 ", image='" + image + '\'' +
                 ", file='" + file + '\'' +
                 ", status=" + status +
+                ", custom=" + custom +
+                ", product=" + product +
                 '}';
     }
 }

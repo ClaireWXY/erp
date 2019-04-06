@@ -37,6 +37,13 @@ public class ProductController {
         return productList;
     }
 
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Product> allProducts(){
+        List<Product> productList = productService.findAllProducts();
+        return productList;
+    }
+
     //根据产品编号，查询单个商品（查询不显示，有问题）
     @RequestMapping("search_product_by_productId")
     @ResponseBody
