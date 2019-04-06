@@ -1,5 +1,6 @@
 package com.cskaoyan.service.impl;
 
+import com.cskaoyan.bean.FinalCountCheck;
 import com.cskaoyan.bean.PageFinalCountList;
 import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.mapper.FinalCountCheckMapper;
@@ -37,6 +38,24 @@ public class FCountCheckServiceImpl implements FCountCheckService {
         int i = finalCountCheckMapper.finalCountCheckCountByOrderId(searchValue);
         TotalAndList totalAndList = new TotalAndList(i, pageFinalCountListByOrderId);
         return totalAndList;
+    }
+
+    @Override
+    public boolean insertFinalCountCheck(FinalCountCheck finalCountCheck) {
+        int insert = finalCountCheckMapper.insert(finalCountCheck);
+        return insert==1;
+    }
+
+    @Override
+    public boolean updateFinalCountCheck(FinalCountCheck finalCountCheck) {
+        int i = finalCountCheckMapper.updateByPrimaryKey(finalCountCheck);
+        return i==1;
+    }
+
+    @Override
+    public boolean deleteFinalCountCheckByIds(String[] ids) {
+        int i = finalCountCheckMapper.deleteFinalCountCheckByIds(ids);
+        return i!=0;
     }
 
 }

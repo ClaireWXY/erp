@@ -237,4 +237,11 @@
         select count(*) from final_measuret_check  where final_measuret_check.order_id like CONCAT('%',#{orderId},'%')
     </select>
 
+    <delete id="deleteFinalMeasuretCheckByIds">
+        delete from final_measuret_check where f_measure_check_id in (
+        <foreach collection="array" item="id" separator=",">
+            #{id}
+        </foreach>)
+    </delete>
+
 </mapper>

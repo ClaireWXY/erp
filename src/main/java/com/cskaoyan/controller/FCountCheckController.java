@@ -1,5 +1,8 @@
 package com.cskaoyan.controller;
 
+import com.cskaoyan.bean.FinalCountCheck;
+import com.cskaoyan.bean.FinalMeasuretCheck;
+import com.cskaoyan.bean.Tip;
 import com.cskaoyan.bean.TotalAndList;
 import com.cskaoyan.mapper.FinalCountCheckMapper;
 import com.cskaoyan.service.FCountCheckService;
@@ -48,6 +51,46 @@ public class FCountCheckController {
     public TotalAndList searchFCountCheckByFCountCheckOrderId(String searchValue,int page,int rows){
         TotalAndList pageMeasureListById = fCountCheckService.findfCountCheckByOrderId(searchValue, (page-1)*rows, rows);
         return pageMeasureListById;
+    }
+
+    @RequestMapping("add")
+    public String add(){
+        return "f_count_check_add";
+    }
+
+    @RequestMapping("edit")
+    public String edit(){
+        return "f_count_check_edit";
+    }
+
+
+    @RequestMapping("insert")
+    @ResponseBody
+    public Tip insert(FinalCountCheck finalCountCheck){
+        boolean b = fCountCheckService.insertFinalCountCheck(finalCountCheck);
+        if (b){
+            return new Tip("200","添加成功!",null);
+        }
+        return new Tip("0","添加失败。",null);
+    }
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Tip updateAll(FinalCountCheck finalCountCheck){
+        boolean b = fCountCheckService.updateFinalCountCheck(finalCountCheck);
+        if (b){
+            return new Tip("200","修改成功!",null);
+        }
+        return new Tip("0","修改失败。",null);
+    }
+
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Tip deleteBatch(String[] ids){
+        boolean b = fCountCheckService.deleteFinalCountCheckByIds(ids);
+        if (b){
+            return new Tip("200","添加成功!",null);
+        }
+        return new Tip("0","添加失败。",null);
     }
 
 }

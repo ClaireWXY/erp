@@ -31,4 +31,7 @@ public interface FinalCountCheckMapper {
     List<PageFinalCountList> findPageFinalCountListByOrderId(@Param("orderId") String searchValue,@Param("page") int page, @Param("rows") int rows);
 
     int finalCountCheckCountByOrderId(@Param("orderId") String searchValue);
+
+    int deleteFinalCountCheckByIds(@Param("array") String[] ids);
+
 }
