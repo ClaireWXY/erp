@@ -6,6 +6,7 @@ import com.cskaoyan.mapper.DeviceTypeMapper;
 import com.cskaoyan.service.DeviceTypeService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -34,11 +35,8 @@ public class DeviceTypeServiceImpl implements DeviceTypeService
         List<DeviceType> deviceTypes = this.deviceTypeMapper.queryAllDeviceType((page - 1) * rows, rows);
         //返回查询总记录数
         int counts = deviceTypeMapper.deviceTypeCount();
-
         TotalAndList totalAndList = new TotalAndList(counts, deviceTypes);
         return totalAndList;
-//         List<DeviceType> deviceTypes = this.deviceTypeMapper.queryAllDeviceType((page - 1) * rows, rows);
-//         return deviceTypes;
     }
 
     /**
@@ -77,16 +75,6 @@ public class DeviceTypeServiceImpl implements DeviceTypeService
         return i==1;
     }
 
-    /**
-     * 分页查询
-     * @return
-     */
-    @Override
-    public List<DeviceType> queryDeviceTypeByPageAndSelections()
-    {
-
-        return null;
-    }
 
     /**
      * 获取总记录数
@@ -99,5 +87,24 @@ public class DeviceTypeServiceImpl implements DeviceTypeService
         return counts;
     }
 
+    /**
+     * 根据设备编号搜索设备种类
+     * @param searchValue
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("searchValue") String searchValue, @Param("page") Integer page, @Param("rows") Integer rows)
+    {
+        List<DeviceType> deviceTypes = deviceTypeMapper.searchDeviceTypeByDeviceTypeId(searchValue, (page - 1) * rows, rows);
+        return deviceTypes;
+    }
 
+    @Override
+    public List<DeviceType> searchDeviceTypeByDeviceTypeName(@Param("searchValue") String searchValue, @Param("page") Integer page, @Param("rows") Integer rows)
+    {
+        List<DeviceType> deviceTypes = deviceTypeMapper.searchDeviceTypeByDeviceTypeName(searchValue, (page - 1) * rows, rows);
+        return deviceTypes;
+    }
 }

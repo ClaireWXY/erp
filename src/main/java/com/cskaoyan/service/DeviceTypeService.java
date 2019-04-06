@@ -2,6 +2,7 @@ package com.cskaoyan.service;
 
 import com.cskaoyan.bean.DeviceType;
 import com.cskaoyan.bean.TotalAndList;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -41,12 +42,23 @@ public interface DeviceTypeService
      */
     boolean updateByPrimaryKey(DeviceType record);
 
-    List<DeviceType> queryDeviceTypeByPageAndSelections();
-
     /**
      * 获取总记录数
+     *
      * @return
      */
     int deviceTypeCount();
+
+    /**
+     * 根据设备编号搜索设备种类
+     *
+     * @param searchValue
+     * @param page
+     * @param rows
+     * @return
+     */
+    List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("searchValue") String searchValue, @Param("page") Integer page, @Param("rows") Integer rows);
+
+    List<DeviceType> searchDeviceTypeByDeviceTypeName(@Param("searchValue") String searchValue,@Param("page") Integer page,@Param("rows") Integer rows);
 
 }

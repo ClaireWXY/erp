@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @Author: OCW
  * @Date: 19/04/04 09:37
@@ -36,7 +38,6 @@ public class DeviceTypeController
     @RequestMapping("device/deviceType")
     public String DeviceCheckForm(@Param("page") Integer page, @Param("rows") Integer rows)
     {
-
         return "deviceType";
     }
 
@@ -109,5 +110,35 @@ public class DeviceTypeController
             return new Tip("200", "删除设备种类成功!", null);
         }
         return new Tip("0", "删除失败。", null);
+    }
+
+    /**
+     * 根据设备编号进行搜索(未实现分页功能)（未实现模糊查找功能）
+     * @param searchValue
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping("deviceType/search_deviceType_by_deviceTypeId")
+    @ResponseBody
+    public List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("searchValue") String searchValue,@Param("page") Integer page,@Param("rows") Integer rows)
+    {
+        List<DeviceType> deviceTypes = deviceTypeService.searchDeviceTypeByDeviceTypeId(searchValue, page, rows);
+        return deviceTypes;
+    }
+
+    /**
+     * 根据设备名称进行搜索(未实现分页功能)（未实现模糊查找功能）
+     * @param searchValue
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping("deviceType/search_deviceType_by_deviceTypeName")
+    @ResponseBody
+    public List<DeviceType> searchDeviceTypeByDeviceTypeName(@Param("searchValue") String searchValue,@Param("page") Integer page,@Param("rows") Integer rows)
+    {
+        List<DeviceType> deviceTypes = deviceTypeService.searchDeviceTypeByDeviceTypeName(searchValue, page, rows);
+        return deviceTypes;
     }
 }
