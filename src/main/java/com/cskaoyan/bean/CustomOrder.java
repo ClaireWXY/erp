@@ -1,14 +1,17 @@
 package com.cskaoyan.bean;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 public class CustomOrder {
     String 	orderId;
     String 	customId;
     String 	productId;
-    String 	orderDate;
-    String 	requestDate;
+    Date orderDate;
+    Date 	requestDate;
     String 	note;
     int    	quantity;
-    double	unitPrice;
+    BigDecimal	unitPrice;
     String	unit;
     String	image;
     String	file;
@@ -19,7 +22,7 @@ public class CustomOrder {
     public CustomOrder() {
     }
 
-    public CustomOrder(String orderId, String customId, String productId, String orderDate, String requestDate, String note, int quantity, double unitPrice, String unit, String image, String file, int status, Custom custom, Product product) {
+    public CustomOrder(String orderId, String customId, String productId, Date orderDate, Date requestDate, String note, int quantity, BigDecimal unitPrice, String unit, String image, String file, int status, Custom custom, Product product) {
         this.orderId = orderId;
         this.customId = customId;
         this.productId = productId;
@@ -33,22 +36,6 @@ public class CustomOrder {
         this.file = file;
         this.status = status;
         this.custom = custom;
-        this.product = product;
-    }
-
-    public Custom getCustom() {
-        return custom;
-    }
-
-    public void setCustom(Custom custom) {
-        this.custom = custom;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
         this.product = product;
     }
 
@@ -76,19 +63,19 @@ public class CustomOrder {
         this.productId = productId;
     }
 
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public String getRequestDate() {
+    public Date getRequestDate() {
         return requestDate;
     }
 
-    public void setRequestDate(String requestDate) {
+    public void setRequestDate(Date requestDate) {
         this.requestDate = requestDate;
     }
 
@@ -108,11 +95,11 @@ public class CustomOrder {
         this.quantity = quantity;
     }
 
-    public double getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -148,14 +135,30 @@ public class CustomOrder {
         this.status = status;
     }
 
+    public Custom getCustom() {
+        return custom;
+    }
+
+    public void setCustom(Custom custom) {
+        this.custom = custom;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     @Override
     public String toString() {
         return "CustomOrder{" +
                 "orderId='" + orderId + '\'' +
                 ", customId='" + customId + '\'' +
                 ", productId='" + productId + '\'' +
-                ", orderDate='" + orderDate + '\'' +
-                ", requestDate='" + requestDate + '\'' +
+                ", orderDate=" + orderDate +
+                ", requestDate=" + requestDate +
                 ", note='" + note + '\'' +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +

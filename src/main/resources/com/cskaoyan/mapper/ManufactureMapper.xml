@@ -129,6 +129,8 @@
     </set>
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </update>
+
+  <!--修改数据-->
   <update id="updateByPrimaryKey" parameterType="com.cskaoyan.bean.Manufacture">
     <!--
       WARNING - @mbg.generated
@@ -143,4 +145,12 @@
       end_date = #{endDate,jdbcType=TIMESTAMP}
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </update>
+
+  <!--删除数据-->
+  <delete id="deleteBatchManufactureByIds">
+    delete from manufacture where manufacture_sn in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

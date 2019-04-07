@@ -8,11 +8,15 @@ import java.util.List;
 public interface CustomOrderService {
 
     //查询所有的订单
-    List<CustomOrder> findAllCustomOrder();
+    List<CustomOrder> findAllCustomOrder(Integer page,Integer rows);
     //删除一条数据
     boolean deleteByPrimaryKey(String orderId);
 
     //删除多条订单数据
     boolean deleteBatchOrderByIds(String[] ids);
 
+    boolean updateCustomOrderById(CustomOrder customOrder);
+
+    //新增一条数据
+    boolean insertCustomOrder(CustomOrder customOrder);
 }

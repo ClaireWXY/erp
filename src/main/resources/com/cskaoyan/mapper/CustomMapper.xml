@@ -217,4 +217,11 @@
       note = #{note,jdbcType=VARCHAR}
     where custom_id = #{customId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findOneCustomById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from custom
+    where custom_id = #{customId}
+  </select>
 </mapper>

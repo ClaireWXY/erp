@@ -23,7 +23,11 @@ public interface CustomMapper {
     //查询所有的客户
     ArrayList<Custom> selectAllCustom();
 
+    //删除数据
     int deleteBatchCustomByIds(@Param("ids") String[] ids);
 
+
     ArrayList<Custom> selectByName(@Param("customName") String customName);
+
+    Custom findOneCustomById(@Param("customId")  String customId);
 }

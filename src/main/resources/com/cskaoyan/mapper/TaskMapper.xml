@@ -41,6 +41,8 @@
     delete from task
     where task_id = #{taskId,jdbcType=VARCHAR}
   </delete>
+
+  <!--新增数据-->
   <insert id="insert" parameterType="com.cskaoyan.bean.Task">
     <!--
       WARNING - @mbg.generated
@@ -130,4 +132,17 @@
       working_hours = #{workingHours,jdbcType=DECIMAL}
     where task_id = #{taskId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="selectAllTask" resultMap="BaseResultMap">
+    select * from task
+  </select>
+
+  <!--删除数据-->
+  <delete id="deleteBatchTaskByIds">
+    delete from task where task_id in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

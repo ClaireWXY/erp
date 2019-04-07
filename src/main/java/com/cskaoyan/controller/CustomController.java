@@ -5,6 +5,7 @@ import com.cskaoyan.bean.Tip;
 import com.cskaoyan.service.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,8 +36,8 @@ public class CustomController {
 
     @RequestMapping("list")
     @ResponseBody
-   /* //分页查询
-    public ArrayList<Custom> customList(int page,int rows){
+    //分页查询
+    /*public ArrayList<Custom> customList(int page,int rows){
         ArrayList<Custom> customList = customService.selectAllCustom(page,rows);
         return customList;
     }*/
@@ -121,4 +122,12 @@ public class CustomController {
         ArrayList<Custom> customList = customService.selectAllCustom();
         return customList;
     }
+
+    @RequestMapping("/get/{customId}")
+    @ResponseBody
+    public Custom get(@PathVariable("customId") String customId){
+        Custom oneCustomById = customService.findOneCustomById(customId);
+        return oneCustomById;
+    }
+
 }

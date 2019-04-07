@@ -1,16 +1,18 @@
 package com.cskaoyan.bean;
 
+import java.math.BigDecimal;
+
 public class Task {
     String	taskId;
     String	manufactureSn;
     String	workId;
     int		taskQuantity;
-    double	workingHours;
+    BigDecimal workingHours;
 
     public Task() {
     }
 
-    public Task(String taskId, String manufactureSn, String workId, int taskQuantity, double workingHours) {
+    public Task(String taskId, String manufactureSn, String workId, int taskQuantity, BigDecimal workingHours) {
         this.taskId = taskId;
         this.manufactureSn = manufactureSn;
         this.workId = workId;
@@ -50,11 +52,11 @@ public class Task {
         this.taskQuantity = taskQuantity;
     }
 
-    public double getWorkingHours() {
+    public BigDecimal getWorkingHours() {
         return workingHours;
     }
 
-    public void setWorkingHours(double workingHours) {
+    public void setWorkingHours(BigDecimal workingHours) {
         this.workingHours = workingHours;
     }
 

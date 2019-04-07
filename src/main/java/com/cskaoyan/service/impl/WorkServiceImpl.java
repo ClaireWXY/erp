@@ -25,4 +25,26 @@ public class WorkServiceImpl implements WorkService {
         Work work = workMapper.selectByPrimaryKey(workId);
         return work;
     }
+
+    //删除数据
+    @Override
+    public boolean deleteBatchWorkByIds(String[] ids) {
+        int i = workMapper.deleteBatchWorkByIds(ids);
+        return i==ids.length;
+    }
+
+    //修改数据
+
+    @Override
+    public boolean updateWorkById(Work work) {
+        int update = workMapper.updateByPrimaryKey(work);
+        return update==1;
+    }
+
+    //新增数据
+    @Override
+    public boolean insertWork(Work work) {
+        int i = workMapper.insert(work);
+        return i==1;
+    }
 }

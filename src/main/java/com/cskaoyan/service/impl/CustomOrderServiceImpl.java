@@ -16,8 +16,8 @@ public class CustomOrderServiceImpl implements CustomOrderService {
 
     //查询所有的订单
     @Override
-    public List<CustomOrder> findAllCustomOrder() {
-        List<CustomOrder> orderList = customOrderMapper.selectAllOrder();
+    public List<CustomOrder> findAllCustomOrder(Integer page,Integer rows) {
+        List<CustomOrder> orderList = customOrderMapper.selectAllOrder((page-1)*rows,rows);
         return orderList;
     }
 
@@ -33,5 +33,20 @@ public class CustomOrderServiceImpl implements CustomOrderService {
     public boolean deleteBatchOrderByIds(String[] ids) {
         int i = customOrderMapper.deleteBatchOrderByIds(ids);
         return i==ids.length;
+    }
+
+   //修改数据
+
+    @Override
+    public boolean updateCustomOrderById(CustomOrder customOrder) {
+        int update = customOrderMapper.updateByPrimaryKey(customOrder);
+        return update==1;
+    }
+
+    //新增数据
+    @Override
+    public boolean insertCustomOrder(CustomOrder customOrder) {
+        int i = customOrderMapper.insert(customOrder);
+        return i==1;
     }
 }

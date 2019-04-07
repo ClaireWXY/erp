@@ -48,6 +48,8 @@
     delete from work
     where work_id = #{workId,jdbcType=VARCHAR}
   </delete>
+
+  <!--新增数据-->
   <insert id="insert" parameterType="com.cskaoyan.bean.Work">
     <!--
       WARNING - @mbg.generated
@@ -135,6 +137,8 @@
     </set>
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
+
+  <!--修改数据-->
   <update id="updateByPrimaryKey" parameterType="com.cskaoyan.bean.Work">
     <!--
       WARNING - @mbg.generated
@@ -149,4 +153,12 @@
       rating = #{rating,jdbcType=INTEGER}
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
+
+  <!--删除数据-->
+  <delete id="deleteBatchWorkByIds">
+    delete from work where work_id in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

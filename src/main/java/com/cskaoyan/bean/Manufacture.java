@@ -1,17 +1,19 @@
 package com.cskaoyan.bean;
 
+import java.util.Date;
+
 public class Manufacture {
     String	manufactureSn;
     String	orderId;
     String	technologyId;
     int		launchQuantity;
-    String	beginDate;
-    String	endDate;
+    Date beginDate;
+    Date endDate;
 
     public Manufacture() {
     }
 
-    public Manufacture(String manufactureSn, String orderId, String technologyId, int launchQuantity, String beginDate, String endDate) {
+    public Manufacture(String manufactureSn, String orderId, String technologyId, int launchQuantity, Date beginDate, Date endDate) {
         this.manufactureSn = manufactureSn;
         this.orderId = orderId;
         this.technologyId = technologyId;
@@ -52,19 +54,19 @@ public class Manufacture {
         this.launchQuantity = launchQuantity;
     }
 
-    public String getBeginDate() {
+    public Date getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(String beginDate) {
+    public void setBeginDate(Date beginDate) {
         this.beginDate = beginDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

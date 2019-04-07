@@ -58,4 +58,10 @@ public class CustomServiceImpl implements CustomService {
         ArrayList<Custom> customList = customMapper.selectByName(customName);
         return customList;
     }
+
+    @Override
+    public Custom findOneCustomById(String id) {
+        Custom oneCustomById = customMapper.findOneCustomById(id);
+        return oneCustomById;
+    }
 }

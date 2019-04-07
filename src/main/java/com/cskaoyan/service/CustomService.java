@@ -22,7 +22,8 @@ public interface CustomService {
     //根据客户名称查询客户数据
     ArrayList<Custom> selectCustomByName(String customName);
 
-
+    //通过id找到单个用户
+    Custom findOneCustomById(String id);
 
 
 }

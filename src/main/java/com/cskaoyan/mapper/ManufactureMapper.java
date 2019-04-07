@@ -1,11 +1,13 @@
 package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.Manufacture;
+import org.apache.ibatis.annotations.Param;
 
 public interface ManufactureMapper {
     int deleteByPrimaryKey(String manufactureSn);
 
-    int insert(Manufacture record);
+    //新增数据
+    int insert(Manufacture manufacture);
 
     int insertSelective(Manufacture record);
 
@@ -13,5 +15,9 @@ public interface ManufactureMapper {
 
     int updateByPrimaryKeySelective(Manufacture record);
 
+    //修改数据
     int updateByPrimaryKey(Manufacture record);
+
+    //删除数据
+    int deleteBatchManufactureByIds(@Param("ids") String[] ids);
 }
