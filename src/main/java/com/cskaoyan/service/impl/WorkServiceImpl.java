@@ -47,4 +47,10 @@ public class WorkServiceImpl implements WorkService {
         int i = workMapper.insert(work);
         return i==1;
     }
+
+    @Override
+    public List<Work> queryAllWorks(Integer page, Integer rows) {
+        List<Work> works = workMapper.queryAllWorks(page, rows);
+        return works;
+    }
 }

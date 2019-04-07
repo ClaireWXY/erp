@@ -18,4 +18,7 @@ public interface WorkService {
 
     //新增数据
     boolean insertWork(Work work);
+
+    //显示查询work
+    List<Work> queryAllWorks(Integer page,Integer rows);
 }

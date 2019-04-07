@@ -25,4 +25,8 @@ public interface WorkMapper {
 
     //删除数据
     int deleteBatchWorkByIds(@Param("ids") String[] ids);
+
+    //在页面上显示所有的work数据
+
+    List<Work> queryAllWorks(@Param("offset") Integer offset,@Param("rows") Integer rows);
 }

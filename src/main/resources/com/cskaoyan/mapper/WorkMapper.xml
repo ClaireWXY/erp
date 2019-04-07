@@ -161,4 +161,47 @@
       #{id}
     </foreach>
   </delete>
+
+  <resultMap id="AllWorkMap" type="com.cskaoyan.bean.Work">
+    <id column="work_id" jdbcType="VARCHAR" property="workId" />
+    <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
+    <result column="rating" jdbcType="INTEGER" property="rating" />
+    <association property="product" javaType="com.cskaoyan.bean.Product">
+      <result column="product_id" jdbcType="VARCHAR" property="productId" />
+      <result column="product_name" jdbcType="VARCHAR" property="productName" />
+      <result column="product_type" jdbcType="VARCHAR" property="productType" />
+      <result column="image" jdbcType="VARCHAR" property="image" />
+      <result column="note" jdbcType="VARCHAR" property="note" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+    </association>
+    <association property="process" javaType="com.cskaoyan.bean.Process">
+      <id column="process_id" jdbcType="VARCHAR" property="processId" />
+      <result column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
+      <result column="sequence" jdbcType="INTEGER" property="sequence" />
+      <result column="quota" jdbcType="INTEGER" property="quota" />
+    </association>
+    <association property="device" javaType="com.cskaoyan.bean.Device">
+      <id column="device_id" jdbcType="VARCHAR" property="deviceId" />
+      <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+      <result column="device_type_id" jdbcType="VARCHAR" property="deviceTypeId" />
+      <result column="device_status_id" jdbcType="VARCHAR" property="deviceStatusId" />
+      <result column="device_status" jdbcType="VARCHAR" property="deviceStatus" />
+      <result column="device_purchase_date" jdbcType="TIMESTAMP" property="devicePurchaseDate" />
+      <result column="device_purchase_price" jdbcType="DECIMAL" property="devicePurchasePrice" />
+      <result column="device_manufacture_date" jdbcType="TIMESTAMP" property="deviceManufactureDate" />
+      <result column="device_service_life" jdbcType="TIMESTAMP" property="deviceServiceLife" />
+      <result column="device_keeper_id" jdbcType="VARCHAR" property="deviceKeeperId" />
+      <result column="device_type_name" jdbcType="VARCHAR" property="deviceTypeName" />
+      <result column="emp_name" jdbcType="VARCHAR" property="deviceKeeper" />
+      <result column="note" jdbcType="VARCHAR" property="note" />
+    </association>
+  </resultMap>
+  <select id="queryAllWorks" resultMap="AllWorkMap">
+    select *
+    from work w
+    inner join product p on w.product_id = p.product_id
+    inner join process p2 on w.process_id = p2.process_id
+    inner join device d on w.device_id = d.device_id
+     limit #{rows} offset #{offset}
+  </select>
 </mapper>

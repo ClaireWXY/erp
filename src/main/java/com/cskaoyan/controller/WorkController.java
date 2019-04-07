@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -32,9 +33,9 @@ public class WorkController {
 
     @RequestMapping("list")
     @ResponseBody
-    public List<Work> list(){
-        List<Work> workList = workService.selectAllWork();
-        return workList;
+    public List<Work> list(@RequestParam("page") Integer page, @RequestParam("rows") Integer rows){
+        List<Work> works = workService.queryAllWorks(page, rows);
+        return works;
     }
 
     @RequestMapping("get_data")
