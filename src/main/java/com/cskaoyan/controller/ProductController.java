@@ -5,6 +5,7 @@ import com.cskaoyan.bean.Tip;
 import com.cskaoyan.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -103,5 +104,13 @@ public class ProductController {
     public List<Product> getDate(){
         List<Product> productList = productService.findAllProducts();
         return productList;
+    }
+
+    //根据id查询一个产品
+    @RequestMapping("/get/{productId}")
+    @ResponseBody
+    public Product get(@PathVariable("productId") String productId){
+        Product oneProductById = productService.findOneProductById(productId);
+        return oneProductById;
     }
 }

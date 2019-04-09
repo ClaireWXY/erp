@@ -23,4 +23,7 @@ public interface ProductService {
 
     //修改产品信息
     boolean updateProductById(Product product);
+
+    //根据id查询一个商品
+    Product findOneProductById(String productId);
 }

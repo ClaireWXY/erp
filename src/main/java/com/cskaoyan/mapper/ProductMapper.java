@@ -26,4 +26,8 @@ public interface ProductMapper {
 
     //修改一条产品信息
     int updateProductById(Product product);
+
+    //根据id查询一个商品
+    Product findOneProductById(@Param("id") String productId);
+
 }

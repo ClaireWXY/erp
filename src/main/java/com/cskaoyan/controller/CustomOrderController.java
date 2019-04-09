@@ -1,6 +1,7 @@
 package com.cskaoyan.controller;
 
 import com.cskaoyan.bean.CustomOrder;
+import com.cskaoyan.bean.Product;
 import com.cskaoyan.bean.Tip;
 import com.cskaoyan.service.CustomOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,11 +90,21 @@ public class CustomOrderController {
     @RequestMapping("insert")
     @ResponseBody
     public Tip insert(CustomOrder customOrder){
-
         boolean b = customOrderService.insertCustomOrder(customOrder);
         if (b){
             return new Tip("200","增加成功。",null);
         }
         return new Tip("0","添加失败。",null);
+    }
+
+    //根据编号修改订单要求（note）：此处有bug,需要完善
+    @RequestMapping("update_note")
+    @ResponseBody
+    public Tip updateNote(CustomOrder customOrder){
+        boolean b = customOrderService.updateNote(customOrder);
+        if (b){
+            return new Tip("200","修改成功。",null);
+        }
+        return new Tip("0","修改失败。",null);
     }
 }

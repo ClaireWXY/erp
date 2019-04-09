@@ -25,5 +25,4 @@ public interface CustomService {
     //通过id找到单个用户
     Custom findOneCustomById(String id);
 
-
 }

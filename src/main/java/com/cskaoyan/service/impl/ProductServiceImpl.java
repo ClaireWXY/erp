@@ -54,4 +54,11 @@ public class ProductServiceImpl implements ProductService {
         int update = productMapper.updateProductById(product);
         return update==1;
     }
+
+    //根据id查询一个商品
+    @Override
+    public Product findOneProductById(String productId) {
+        Product product = productMapper.findOneProductById(productId);
+        return product;
+    }
 }

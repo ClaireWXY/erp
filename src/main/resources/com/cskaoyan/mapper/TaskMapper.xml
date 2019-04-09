@@ -21,6 +21,8 @@
     -->
     task_id, manufacture_sn, work_id, task_quantity, working_hours
   </sql>
+
+  <!--查询所有的数据-->
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
@@ -32,6 +34,16 @@
     from task
     where task_id = #{taskId,jdbcType=VARCHAR}
   </select>
+
+
+  <!--查询所有-->
+  <select id="findAllTask" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from task
+    limit #{rows} offset #{offset}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated
@@ -145,4 +157,5 @@
       #{id}
     </foreach>
   </delete>
+
 </mapper>

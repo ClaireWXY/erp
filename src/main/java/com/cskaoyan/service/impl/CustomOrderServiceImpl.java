@@ -1,8 +1,10 @@
 package com.cskaoyan.service.impl;
 
 import com.cskaoyan.bean.CustomOrder;
+import com.cskaoyan.bean.Product;
 import com.cskaoyan.mapper.CustomOrderMapper;
 import com.cskaoyan.service.CustomOrderService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,13 @@ public class CustomOrderServiceImpl implements CustomOrderService {
     @Override
     public boolean insertCustomOrder(CustomOrder customOrder) {
         int i = customOrderMapper.insert(customOrder);
+        return i==1;
+    }
+
+    //修改订单要求
+    @Override
+    public boolean updateNote(CustomOrder customOrder) {
+        int i = customOrderMapper.updateByPrimaryKey(customOrder);
         return i==1;
     }
 }

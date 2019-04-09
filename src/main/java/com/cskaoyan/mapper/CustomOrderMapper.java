@@ -2,6 +2,7 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.Custom;
 import com.cskaoyan.bean.CustomOrder;
+import com.cskaoyan.bean.Product;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public interface CustomOrderMapper {
     //删除多条数据
     int deleteBatchOrderByIds(@Param("ids") String[] ids);
 
-
+    /*//根据订单编号修改订单要求
+    int updateNote(@Param("product")Product product);*/
 
 }

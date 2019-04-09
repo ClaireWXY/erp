@@ -9,8 +9,21 @@ public class Manufacture {
     int		launchQuantity;
     Date beginDate;
     Date endDate;
+    CustomOrder customOrder;
+    Technology technology;
 
     public Manufacture() {
+    }
+
+    public Manufacture(String manufactureSn, String orderId, String technologyId, int launchQuantity, Date beginDate, Date endDate, CustomOrder customOrder, Technology technology) {
+        this.manufactureSn = manufactureSn;
+        this.orderId = orderId;
+        this.technologyId = technologyId;
+        this.launchQuantity = launchQuantity;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
+        this.customOrder = customOrder;
+        this.technology = technology;
     }
 
     public Manufacture(String manufactureSn, String orderId, String technologyId, int launchQuantity, Date beginDate, Date endDate) {
@@ -20,6 +33,22 @@ public class Manufacture {
         this.launchQuantity = launchQuantity;
         this.beginDate = beginDate;
         this.endDate = endDate;
+    }
+
+    public CustomOrder getCustomOrder() {
+        return customOrder;
+    }
+
+    public void setCustomOrder(CustomOrder customOrder) {
+        this.customOrder = customOrder;
+    }
+
+    public Technology getTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(Technology technology) {
+        this.technology = technology;
     }
 
     public String getManufactureSn() {
@@ -72,13 +101,15 @@ public class Manufacture {
 
     @Override
     public String toString() {
-        return "bean.Manufacture{" +
+        return "Manufacture{" +
                 "manufactureSn='" + manufactureSn + '\'' +
                 ", orderId='" + orderId + '\'' +
                 ", technologyId='" + technologyId + '\'' +
                 ", launchQuantity=" + launchQuantity +
-                ", beginDate='" + beginDate + '\'' +
-                ", endDate='" + endDate + '\'' +
+                ", beginDate=" + beginDate +
+                ", endDate=" + endDate +
+                ", customOrder=" + customOrder +
+                ", technology=" + technology +
                 '}';
     }
 }

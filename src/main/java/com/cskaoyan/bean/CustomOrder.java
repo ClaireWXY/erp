@@ -39,6 +39,21 @@ public class CustomOrder {
         this.product = product;
     }
 
+    public CustomOrder(String orderId, String customId, String productId, Date orderDate, Date requestDate, String note, int quantity, BigDecimal unitPrice, String unit, String image, String file, int status) {
+        this.orderId = orderId;
+        this.customId = customId;
+        this.productId = productId;
+        this.orderDate = orderDate;
+        this.requestDate = requestDate;
+        this.note = note;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.unit = unit;
+        this.image = image;
+        this.file = file;
+        this.status = status;
+    }
+
     public String getOrderId() {
         return orderId;
     }

@@ -89,8 +89,16 @@
     from product
   </select>
 
-  <!--根据产品编号查询，产品编号是唯一-->
+  <!--根据产品编号查询-->
   <select id="selectProductById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+    where product_id = #{id}
+  </select>
+
+  <!--根据产品编号查询一个产品-->
+  <select id="findOneProductById" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from product

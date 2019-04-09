@@ -1,6 +1,7 @@
 package com.cskaoyan.service;
 
 import com.cskaoyan.bean.CustomOrder;
+import com.cskaoyan.bean.Product;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,4 +20,7 @@ public interface CustomOrderService {
 
     //新增一条数据
     boolean insertCustomOrder(CustomOrder customOrder);
+
+    //修改订单要求
+    boolean updateNote(CustomOrder customOrder);
 }

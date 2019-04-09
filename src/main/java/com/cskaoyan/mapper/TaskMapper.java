@@ -25,4 +25,7 @@ public interface TaskMapper {
 
     //删除数据
     int deleteBatchTaskByIds(@Param("ids") String[] ids);
+
+    //查询所有
+    List<Task> findAllTask(@Param("offset") Integer offest, @Param("rows") Integer rows);
 }
